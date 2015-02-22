@@ -22,25 +22,25 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Michael Moran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Won-Vo-G2J">
-                        <rect key="frame" x="60" y="26" width="98" height="17"/>
+                        <rect key="frame" x="60" y="28" width="98" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="4h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEK-ey-pSI">
-                        <rect key="frame" x="296" y="26" width="15" height="16"/>
+                        <rect key="frame" x="296" y="28" width="15" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="I have seen the future of newspapers: http://t.co/UfmW12OTCP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFs-WR-kEy">
-                        <rect key="frame" x="60" y="44" width="251" height="31"/>
+                        <rect key="frame" x="60" y="46" width="251" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUl-AW-nCx">
-                        <rect key="frame" x="166" y="26" width="122" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@michaelmoran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUl-AW-nCx">
+                        <rect key="frame" x="166" y="28" width="122" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -72,11 +72,11 @@
                     <constraint firstAttribute="trailingMargin" secondItem="yFs-WR-kEy" secondAttribute="trailing" constant="1" id="CrJ-gs-JEf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RvX-7F-wRu" secondAttribute="trailing" constant="1" id="G3g-8p-JiR"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="top" secondItem="Won-Vo-G2J" secondAttribute="top" id="StA-wc-aTd"/>
-                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="RvX-7F-wRu" secondAttribute="bottom" constant="4" id="ZzC-4K-COl"/>
+                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="RvX-7F-wRu" secondAttribute="bottom" priority="999" constant="6" id="ZzC-4K-COl"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="top" secondItem="PEK-ey-pSI" secondAttribute="top" id="aE4-el-DVR"/>
-                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="GYx-Ir-uN9" secondAttribute="top" constant="-2" id="ceg-bH-6Vr"/>
+                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="GYx-Ir-uN9" secondAttribute="top" id="ceg-bH-6Vr"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RvX-7F-wRu" secondAttribute="trailing" constant="1" id="gsG-ug-yZE"/>
-                    <constraint firstItem="RvX-7F-wRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="nd1-Yd-4jv"/>
+                    <constraint firstItem="RvX-7F-wRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" priority="999" constant="4" id="nd1-Yd-4jv"/>
                     <constraint firstItem="Won-Vo-G2J" firstAttribute="leading" secondItem="GYx-Ir-uN9" secondAttribute="trailing" constant="8" id="qXF-am-yBm"/>
                     <constraint firstItem="yFs-WR-kEy" firstAttribute="leading" secondItem="GYx-Ir-uN9" secondAttribute="trailing" constant="8" id="s5k-v1-iFU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PEK-ey-pSI" secondAttribute="trailing" constant="1" id="uyI-5Q-D6u"/>
@@ -94,8 +94,8 @@
             <connections>
                 <outlet property="avatarImage" destination="GYx-Ir-uN9" id="aS8-kv-KXv"/>
                 <outlet property="nameLabel" destination="Won-Vo-G2J" id="KCe-P0-4Wm"/>
-                <outlet property="retweetLabelHeightConstraint" destination="Lnh-AN-Hup" id="PAt-ap-u9B"/>
                 <outlet property="retweetedByLabel" destination="RvX-7F-wRu" id="aA0-hw-6fg"/>
+                <outlet property="retweetedByLabelHeightConstraint" destination="Lnh-AN-Hup" id="Ii2-T7-jp7"/>
                 <outlet property="retweetedByLabelTopSpaceConstraint" destination="nd1-Yd-4jv" id="a0e-P2-Vg1"/>
                 <outlet property="screenNameLabel" destination="sUl-AW-nCx" id="Ptk-TE-ZZU"/>
                 <outlet property="timeSinceTweetLabel" destination="PEK-ey-pSI" id="yw5-Xd-6na"/>

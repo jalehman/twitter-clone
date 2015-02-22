@@ -21,7 +21,7 @@ class TweetTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userNameLabelVerticalSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var retweetedByLabelTopSpaceConstraint: NSLayoutConstraint!
-    @IBOutlet weak var retweetLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var retweetedByLabelHeightConstraint: NSLayoutConstraint!
     
     // MARK: UITableViewCell Overrides
     
@@ -48,14 +48,14 @@ class TweetTableViewCell: UITableViewCell {
         
         if tweetCellViewModel.retweetedByUserName != nil {
             retweetedByLabel.text = "\(tweetCellViewModel.retweetedByUserName!) retweeted"
-            retweetLabelHeightConstraint.constant = 10
-            userNameLabelVerticalSpaceConstraint.constant = 4
+            retweetedByLabelHeightConstraint.constant = 10
+            userNameLabelVerticalSpaceConstraint.constant = 6
             retweetedByLabelTopSpaceConstraint.constant = 4
             retweetedByLabel.hidden = false
             self.setNeedsUpdateConstraints()
         } else {
             retweetedByLabel.hidden = true
-            retweetLabelHeightConstraint.constant = 0
+            retweetedByLabelHeightConstraint.constant = 0
             userNameLabelVerticalSpaceConstraint.constant = 0
             retweetedByLabelTopSpaceConstraint.constant = 0
             self.setNeedsUpdateConstraints()
