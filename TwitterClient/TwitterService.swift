@@ -17,14 +17,14 @@ class TwitterService: BDBOAuth1RequestOperationManager {
     let twitterConsumerKey = "C30J8TCseNs9Pdz4q3FFHJSAn"
     let twitterConsumerSecret = "q4kXNeiOaaSPg2t0EmR3uhz50ylebz55JgHxgQ0uXZ1zOIKseN"
     
-    let executeOpenURL: RACCommand!
+    var executeOpenURL: RACCommand!
     
     override init() {
         super.init(baseURL: twitterBaseURL, consumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
         
         executeOpenURL = RACCommand() {
             input -> RACSignal in
-            let url = input as NSURL
+            let url = input as! NSURL
             return self.openURL(url)
         }
     }
@@ -62,10 +62,11 @@ class TwitterService: BDBOAuth1RequestOperationManager {
         return RACSignal.createSignal {
             subscriber -> RACDisposable! in
             self.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) in
-                let tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 subscriber.sendNext(tweets)
                 subscriber.sendCompleted()
                 }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                    println(error)
                     subscriber.sendError(error)
             })
             return nil
@@ -100,7 +101,7 @@ class TwitterService: BDBOAuth1RequestOperationManager {
             
             self.GET("1.1/account/verify_credentials.json", parameters: nil, success: {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) in
-                let user = User(dictionary: response as NSDictionary)
+                let user = User(dictionary: response as! NSDictionary)
                 User.currentUser = user
                 subscriber.sendNext(user)
                 subscriber.sendCompleted()

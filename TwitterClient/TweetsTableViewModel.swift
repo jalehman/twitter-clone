@@ -14,8 +14,9 @@ class TweetsTableViewModel: NSObject {
     
     dynamic var tweets: [TweetCellViewModel] = []
     
-    let executeLogout: RACCommand!
-    let executeFetchTweets: RACCommand!
+    var executeLogout: RACCommand!
+    var executeFetchTweets: RACCommand!
+    var executeViewTweetDetails: RACCommand!
     
     private let services: ViewModelServices
     
@@ -39,9 +40,16 @@ class TweetsTableViewModel: NSObject {
         
         executeFetchTweets.executionValues().subscribeNext {
             [unowned self] any in
-            let tweets = any as [Tweet]
+            let tweets = any as! [Tweet]
             self.tweets = tweets.map { TweetCellViewModel(services: self.services, tweet: $0) }
         }
+        
+        executeViewTweetDetails = RACCommand() {
+            [unowned self] input -> RACSignal in
+            let tweetCellViewModel = input as! TweetCellViewModel
+            self.services.pushViewModel(TweetDetailViewModel(services: self.services, tweet: tweetCellViewModel.tweet))
+            return RACSignal.empty()
+        }        
     }
 
 }

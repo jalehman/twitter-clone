@@ -12,7 +12,7 @@ class MasterViewModel: NSObject {
     
     // MARK: Properties
     
-    let executeTwitterLogin: RACCommand!
+    var executeTwitterLogin: RACCommand!
     
     private let services: ViewModelServices
     private var tweetsViewModel: TweetsTableViewModel

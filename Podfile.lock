@@ -23,16 +23,19 @@ PODS:
   - BDBOAuth1Manager (1.4.1):
     - AFNetworking/NSURLConnection (~> 2.4.0)
     - AFNetworking/NSURLSession (~> 2.4.0)
+  - DateTools (1.5.0)
   - JGProgressHUD (1.2.3)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager (~> 1.4.0)
+  - DateTools
   - JGProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   BDBOAuth1Manager: 0625ba20bd7d36461bbf6dc3d29276b5932b7409
+  DateTools: 7df78f0c4719eb28cfd2d58a90fafd036e73156c
   JGProgressHUD: 733523c80f69b6dfc41b88a0f33883a89a8b4c3b
 
 COCOAPODS: 0.36.0.beta.2

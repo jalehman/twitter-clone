@@ -32,6 +32,8 @@ class ViewModelServices: NSObject {
         if let tweetsTableViewModel = viewModel as? TweetsTableViewModel {
             authNavigationController = wrapNavigationController(TweetsTableViewController(viewModel: tweetsTableViewModel))
             rootNavigationController.presentViewController(authNavigationController, animated: false, completion: nil)
+        } else if let tweetDetailViewModel = viewModel as? TweetDetailViewModel {
+            authNavigationController.pushViewController(TweetDetailViewController(viewModel: tweetDetailViewModel), animated: true)
         }
     }
     

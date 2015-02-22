@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,64 +15,92 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GYx-Ir-uN9">
-                        <rect key="frame" x="8" y="21" width="44" height="43.5"/>
+                        <rect key="frame" x="8" y="28" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="43.5" id="90S-YK-WFa"/>
                             <constraint firstAttribute="width" constant="44" id="dya-XU-VPF"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Michael Moran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Won-Vo-G2J">
-                        <rect key="frame" x="60" y="19" width="97.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Michael Moran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Won-Vo-G2J">
+                        <rect key="frame" x="60" y="26" width="98" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="4h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEK-ey-pSI">
-                        <rect key="frame" x="296" y="19" width="15" height="16"/>
+                        <rect key="frame" x="296" y="26" width="15" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="I have seen the future of newspapers: http://t.co/UfmW12OTCP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFs-WR-kEy">
-                        <rect key="frame" x="60" y="43" width="251" height="31.5"/>
+                        <rect key="frame" x="60" y="44" width="251" height="31"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUl-AW-nCx">
-                        <rect key="frame" x="170" y="19" width="117.5" height="17"/>
+                        <rect key="frame" x="166" y="26" width="122" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherine Fellows retweeted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvX-7F-wRu">
+                        <rect key="frame" x="60" y="12" width="251" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Lnh-AN-Hup"/>
+                            <constraint firstAttribute="width" constant="251" id="fBh-qF-sH2"/>
+                            <constraint firstAttribute="height" constant="10" id="vMM-aa-Kqy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fBh-qF-sH2"/>
+                                <exclude reference="vMM-aa-Kqy"/>
+                            </mask>
+                        </variation>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GYx-Ir-uN9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2M9-hi-wWF"/>
                     <constraint firstItem="GYx-Ir-uN9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="7hr-QR-G7K"/>
-                    <constraint firstItem="yFs-WR-kEy" firstAttribute="top" secondItem="Won-Vo-G2J" secondAttribute="bottom" constant="7" id="AsF-o8-jHb"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yFs-WR-kEy" secondAttribute="bottom" constant="5" id="BfJ-XW-aOe"/>
-                    <constraint firstItem="GYx-Ir-uN9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="CRS-a7-ykf"/>
+                    <constraint firstItem="yFs-WR-kEy" firstAttribute="top" secondItem="Won-Vo-G2J" secondAttribute="bottom" constant="1" id="AsF-o8-jHb"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yFs-WR-kEy" secondAttribute="bottom" constant="4" id="BfJ-XW-aOe"/>
+                    <constraint firstItem="GYx-Ir-uN9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="CRS-a7-ykf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yFs-WR-kEy" secondAttribute="trailing" constant="1" id="CrJ-gs-JEf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RvX-7F-wRu" secondAttribute="trailing" constant="1" id="G3g-8p-JiR"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="top" secondItem="Won-Vo-G2J" secondAttribute="top" id="StA-wc-aTd"/>
+                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="RvX-7F-wRu" secondAttribute="bottom" constant="4" id="ZzC-4K-COl"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="top" secondItem="PEK-ey-pSI" secondAttribute="top" id="aE4-el-DVR"/>
                     <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="GYx-Ir-uN9" secondAttribute="top" constant="-2" id="ceg-bH-6Vr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RvX-7F-wRu" secondAttribute="trailing" constant="1" id="gsG-ug-yZE"/>
+                    <constraint firstItem="RvX-7F-wRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="nd1-Yd-4jv"/>
                     <constraint firstItem="Won-Vo-G2J" firstAttribute="leading" secondItem="GYx-Ir-uN9" secondAttribute="trailing" constant="8" id="qXF-am-yBm"/>
                     <constraint firstItem="yFs-WR-kEy" firstAttribute="leading" secondItem="GYx-Ir-uN9" secondAttribute="trailing" constant="8" id="s5k-v1-iFU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PEK-ey-pSI" secondAttribute="trailing" constant="1" id="uyI-5Q-D6u"/>
-                    <constraint firstItem="sUl-AW-nCx" firstAttribute="leading" secondItem="Won-Vo-G2J" secondAttribute="trailing" constant="12.5" id="xl4-2c-cKA"/>
+                    <constraint firstItem="sUl-AW-nCx" firstAttribute="leading" secondItem="Won-Vo-G2J" secondAttribute="trailing" constant="8" id="xl4-2c-cKA"/>
                     <constraint firstItem="PEK-ey-pSI" firstAttribute="leading" secondItem="sUl-AW-nCx" secondAttribute="trailing" constant="8.5" id="yup-j0-2Ig"/>
+                    <constraint firstItem="Won-Vo-G2J" firstAttribute="leading" secondItem="RvX-7F-wRu" secondAttribute="leading" id="z65-MW-blP"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="7hr-QR-G7K"/>
+                        <exclude reference="G3g-8p-JiR"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImage" destination="GYx-Ir-uN9" id="aS8-kv-KXv"/>
                 <outlet property="nameLabel" destination="Won-Vo-G2J" id="KCe-P0-4Wm"/>
+                <outlet property="retweetLabelHeightConstraint" destination="Lnh-AN-Hup" id="PAt-ap-u9B"/>
+                <outlet property="retweetedByLabel" destination="RvX-7F-wRu" id="aA0-hw-6fg"/>
+                <outlet property="retweetedByLabelTopSpaceConstraint" destination="nd1-Yd-4jv" id="a0e-P2-Vg1"/>
                 <outlet property="screenNameLabel" destination="sUl-AW-nCx" id="Ptk-TE-ZZU"/>
+                <outlet property="timeSinceTweetLabel" destination="PEK-ey-pSI" id="yw5-Xd-6na"/>
                 <outlet property="tweetTextLabel" destination="yFs-WR-kEy" id="oXX-Gx-unE"/>
+                <outlet property="userNameLabelVerticalSpaceConstraint" destination="ZzC-4K-COl" id="Oil-CB-Ymp"/>
             </connections>
             <point key="canvasLocation" x="673" y="530"/>
         </tableViewCell>

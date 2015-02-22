@@ -32,7 +32,7 @@ class User: NSObject {
             if _currentUser == nil {
                 var data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
                 if data != nil {
-                    let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as NSDictionary
+                    let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
                     _currentUser = User(dictionary: dictionary)
                 }
             }

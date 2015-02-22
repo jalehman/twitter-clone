@@ -10,10 +10,10 @@ import Foundation
 
 extension RACCommand {
     func executionValues() -> RACSignal {
-        return self.executionSignals.flattenMap { $0 as RACStream }
+        return self.executionSignals.flattenMap { $0 as! RACStream }
     }
     
     func executionErrors() -> RACSignal {
-        return self.errors.flattenMap { $0 as RACStream }
+        return self.errors.flattenMap { $0 as! RACStream }
     }
 }
