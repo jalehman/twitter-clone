@@ -100,10 +100,6 @@ Of course, the case where tweet composition fails is not handled here -- we'd en
 
 + Login, Logout, OAuth login flow
 
-![twitter-persist](twitter-persist.gif)
-
-+ Persistence accross sections
-
 ![twitter-compose](twitter-compose.gif)
 
 ![twitter-details](twitter-details.gif)
