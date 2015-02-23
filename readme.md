@@ -1,8 +1,28 @@
-## Twitter [(raw)](https://gist.githubusercontent.com/timothy1ee/b9b1860c8ecb4b0b1c18/raw/2adc3f63677d81644e00245cee891eee88907767/gistfile1.md)
+## Twitter
 
 This is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: `<Number of hours spent>`
+Time spent: `14 hours`
+
+### Notes
+
+Once again, I built this application in MVVM style using ReactiveCocoa
+and the same resources found in
+[previous](https://github.com/jalehman/YelpClone) homework
+assignments.
+
+I personally think that the MVVM modal really shines in this app. Some general patterns used are:
+
+#### API calls are mediated by the `ViewModel`s using `RACCommand`:
+
+`RACCommand` allows one to "execute" some action and then observe the status of execution and react accordingly. Places where this is particularly useful include:
+
++ Displaying and hiding loading indicators -- display a loading indicator while the command is executing, and hide the indicator when it is not executing.
++ Triggering transitions between views: A `ViewModel` will instantiate the child's `UIViewController` `ViewModel`, and then observe the execution of `RACCommand`s within the child.
+Data representing some sort of operation triggered within the application (*e.g.* composing a tweet) is passed back via the command's execution signal.
+An event that should cause the child view to close can also be observed, and the parent `ViewModel` can then close the child.
+
+
 
 ### Features
 
@@ -29,4 +49,3 @@ Time spent: `<Number of hours spent>`
 ### Walkthrough
 
 ![Video Walkthrough](...)
-
