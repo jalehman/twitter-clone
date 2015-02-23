@@ -4,6 +4,11 @@ This is a basic twitter app to read and compose tweets the [Twitter API](https:/
 
 Time spent: `14 hours`
 
+### Installation
+
+1. `git submodule update --init`
+2. `pod install`
+
 ### Notes
 
 Once again, I built this application in MVVM style using ReactiveCocoa
