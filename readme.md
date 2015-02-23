@@ -108,3 +108,8 @@ Of course, the case where tweet composition fails is not handled here -- we'd en
 + Can favorite a tweet, counter increments
 
 ![twitter-retweet-reply](twitter-retweet-reply.gif)
+
++ Reply from home and within a tweet
++ Pull to refresh
++ Retweet increments counter in Tweet details
++ Can retweet From within details and timeline
