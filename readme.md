@@ -102,6 +102,9 @@ Of course, the case where tweet composition fails is not handled here -- we'd en
 
 ![twitter-compose](twitter-compose.gif)
 
-![twitter-details](twitter-details.gif)
++ Compose new tweet
++ Instantaneous (eager) presentation of the new tweet, saved in background.
++ Tweet Details
++ Can favorite a tweet, counter increments
 
 ![twitter-retweet-reply](twitter-retweet-reply.gif)
