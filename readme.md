@@ -13,7 +13,7 @@ assignments.
 
 I personally think that the MVVM modal really shines in this app. Some general patterns used are:
 
-#### API calls are mediated by the `ViewModel`s using `RACCommand`:
+#### API calls are mediated by the `ViewModel`s using `RACCommand`
 
 `RACCommand` allows one to "execute" some action and then observe the status of execution and react accordingly. Places where this is particularly useful include:
 
@@ -22,7 +22,55 @@ I personally think that the MVVM modal really shines in this app. Some general p
 Data representing some sort of operation triggered within the application (*e.g.* composing a tweet) is passed back via the command's execution signal.
 An event that should cause the child view to close can also be observed, and the parent `ViewModel` can then close the child.
 
+#### Twitter API Calls are exposed as RACSignals
 
+Each Twitter operation is exposed as a `RACSignal`, where errors or the result of the call is passed back up to the observer. Signals allow for elegant composition of asynchronous events.
+Take this example (found [here](https://github.com/jalehman/twitter-clone/blob/master/TwitterClient/TweetsTableViewModel.swift#L61)):
+
+```swift
+executeShowComposeTweet = RACCommand() {
+    [weak self] input -> RACSignal in
+
+    let composeTweetViewModel = ComposeTweetViewModel(services: self!.services)
+    services.pushViewModel(composeTweetViewModel)
+
+    let composeTweetCancelledSignal = composeTweetViewModel.executeCancelComposeTweet.executionSignals
+    let composeTweetSignal = composeTweetViewModel.executeComposeTweet.executionSignals
+
+    let closeComposeTweetSignal = RACSignal.merge([composeTweetCancelledSignal, composeTweetSignal])
+
+    closeComposeTweetSignal.subscribeNext {
+        _ in
+        self!.services.popActiveModal()
+    }
+
+    composeTweetViewModel.executeComposeTweet.executionValues()
+        .doNextAs {
+            (tweet: Tweet) in
+            self!.tweets = [TweetCellViewModel(services: self!.services, tweet: tweet)] + self!.tweets
+        }.flattenMapAs {
+            (tweet: Tweet) -> RACStream in
+            return self!.services.twitterService.updateStatus(tweet)
+        }.subscribeNextAs {
+            (tweet: Tweet) in
+            let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
+            viewModel.delegate = self!
+            self!.tweets[0] = viewModel
+    }
+
+    return RACSignal.empty()
+}
+```
+
+Here we instantiate the `ComposeTweetViewModel` and push it onto the stack. We observe the execution of `executeCancelComposeTweet` and `executeComposeTweet` simultaneously with
+`RACSignal.merge` -- the completion of either of these events should cause the modal to be popped off of the stack.
+
+We observe just the successful scenario (`executeComposeTweet`) separately, and chain together several operations:
+1. `.doNextAs`: Instantiate a new `TweetCellViewModel` with the result of the tweet composition (this is prior to actually saving it to Twitter), resulting in an immediate update to the table
+2. `.flattenMapAs`: Take result of the tweet composition and save it to Twitter,
+3. `.subscribeNextAs`: Update the list of tweets to reflect the newly saved tweet from the server after it has been saved.
+
+Of course, the case where tweet composition fails is not handled here -- we'd end up showing a tweet that isn't actually in Twitter. Perhaps this can be improved upon for the next assignment.
 
 ### Features
 
@@ -48,4 +96,12 @@ An event that should cause the child view to close can also be observed, and the
 
 ### Walkthrough
 
-![Video Walkthrough](...)
+![twitter-login-logout](twitter-login-logout.gif)
+
+![twitter-persist](twitter-persist.gif)
+
+![twitter-compose](twitter-compose.gif)
+
+![twitter-details](twitter-details.gif)
+
+![twitter-retweet-reply](twitter-retweet-reply.gif)
