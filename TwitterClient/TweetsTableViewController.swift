@@ -18,6 +18,7 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
     
     private let viewModel: TweetsTableViewModel
     private var logoutButton: UIBarButtonItem!
+    private var composeButton: UIBarButtonItem!
     
     // MARK: API
     
@@ -79,6 +80,9 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
         logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: nil, action: "")
         navigationItem.leftBarButtonItem = logoutButton
         
+        composeButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: nil, action: "")
+        navigationItem.rightBarButtonItem = composeButton
+        
         navigationItem.title = "Home"
         
         bindViewModel()
@@ -100,6 +104,7 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
     
     private func bindViewModel() {
         logoutButton.rac_command = viewModel.executeLogout
+        composeButton.rac_command = viewModel.executeShowComposeTweet
         refreshControl.rac_command = viewModel.executeFetchTweets
         
         viewModel.executeFetchTweets.execute(nil)

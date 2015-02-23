@@ -16,7 +16,7 @@ class ViewModelServices: NSObject {
     let twitterService: TwitterService
     
     private let rootNavigationController: UINavigationController
-    private var authNavigationController: UINavigationController!
+    private var appNavigationController: UINavigationController!
     private var modalNavigationStack: [UINavigationController] = []
     
     // MARK: API
@@ -30,15 +30,19 @@ class ViewModelServices: NSObject {
     
     func pushViewModel(viewModel: AnyObject) {
         if let tweetsTableViewModel = viewModel as? TweetsTableViewModel {
-            authNavigationController = wrapNavigationController(TweetsTableViewController(viewModel: tweetsTableViewModel))
-            rootNavigationController.presentViewController(authNavigationController, animated: false, completion: nil)
+            appNavigationController = wrapNavigationController(TweetsTableViewController(viewModel: tweetsTableViewModel))
+            rootNavigationController.presentViewController(appNavigationController, animated: false, completion: nil)
         } else if let tweetDetailViewModel = viewModel as? TweetDetailViewModel {
-            authNavigationController.pushViewController(TweetDetailViewController(viewModel: tweetDetailViewModel), animated: true)
+            appNavigationController.pushViewController(TweetDetailViewController(viewModel: tweetDetailViewModel), animated: true)
+        } else if let composeTweetViewModel = viewModel as? ComposeTweetViewModel {
+            let composeTweetViewController: UINavigationController = wrapNavigationController(ComposeTweetViewController(viewModel: composeTweetViewModel))
+            modalNavigationStack.push(composeTweetViewController)
+            appNavigationController.presentViewController(modalNavigationStack.peekAtStack()!, animated: true, completion: nil)
         }
     }
     
     func popToRootViewModel() {
-        authNavigationController.dismissViewControllerAnimated(true, completion: nil)
+        appNavigationController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func popActiveModal() {

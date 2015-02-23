@@ -72,6 +72,53 @@ class TwitterService: BDBOAuth1RequestOperationManager {
             return nil
         }
     }
+    
+    func updateStatus(tweet: Tweet) -> RACSignal {
+        return RACSignal.createSignal {
+            subscriber -> RACDisposable! in
+            var parameters = ["status": tweet.text!]
+            if tweet.inReplyToStatusId != nil {
+                parameters["in_reply_to_status_id"] = String(tweet.inReplyToStatusId!)
+            }
+            
+            self.POST("1.1/statuses/update.json", parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) in
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                subscriber.sendNext(tweet)
+                subscriber.sendCompleted()
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                    subscriber.sendError(error)
+            })
+            return nil
+        }
+    }
+    
+    func retweet(tweetId: Int) -> RACSignal {
+        return RACSignal.createSignal {
+            subscriber -> RACDisposable! in
+            self.POST("1.1/statuses/retweet/\(tweetId).json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) in
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                subscriber.sendNext(tweet)
+                subscriber.sendCompleted()
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                    subscriber.sendError(error)
+            })
+            return nil
+        }
+    }
+    
+    func favorite(tweetId: Int) -> RACSignal {
+        return RACSignal.createSignal {
+            subscriber -> RACDisposable! in
+            self.POST("1.1/favorites/create.json", parameters: ["id": tweetId], success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) in
+                let tweet = Tweet(dictionary: response as! NSDictionary)
+                subscriber.sendNext(tweet)
+                subscriber.sendCompleted()
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                    subscriber.sendError(error)
+            })
+            return nil
+        }
+    }
 
     // MARK: Private
     

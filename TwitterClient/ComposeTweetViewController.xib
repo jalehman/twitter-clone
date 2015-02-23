@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeTweetViewController" customModule="TwitterClient" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImage" destination="57q-m1-jfL" id="7a9-mb-S4s"/>
+                <outlet property="screenNameLabel" destination="6Ym-ow-lCa" id="B71-4n-Enc"/>
+                <outlet property="tweetTextView" destination="otf-9U-7jd" id="ZwY-dg-8Nw"/>
+                <outlet property="userNameLabel" destination="m9d-uz-wCB" id="xIA-8G-Dh0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otf-9U-7jd">
+                    <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="57q-m1-jfL">
+                    <rect key="frame" x="8" y="8" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="gT1-yn-Bse"/>
+                        <constraint firstAttribute="height" constant="44" id="gc1-gb-yno"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9d-uz-wCB">
+                    <rect key="frame" x="60" y="8" width="532" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ym-ow-lCa">
+                    <rect key="frame" x="60" y="27" width="532" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="57q-m1-jfL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="1ks-J6-9M5"/>
+                <constraint firstItem="m9d-uz-wCB" firstAttribute="leading" secondItem="57q-m1-jfL" secondAttribute="trailing" constant="8" id="3M9-32-GQ0"/>
+                <constraint firstItem="6Ym-ow-lCa" firstAttribute="leading" secondItem="57q-m1-jfL" secondAttribute="trailing" constant="8" id="GaW-wY-i8V"/>
+                <constraint firstItem="otf-9U-7jd" firstAttribute="top" secondItem="57q-m1-jfL" secondAttribute="bottom" constant="8" id="QKE-yX-V0E"/>
+                <constraint firstAttribute="trailing" secondItem="6Ym-ow-lCa" secondAttribute="trailing" constant="8" id="ViI-fu-Zp3"/>
+                <constraint firstItem="otf-9U-7jd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hJa-oE-ngd"/>
+                <constraint firstItem="6Ym-ow-lCa" firstAttribute="top" secondItem="m9d-uz-wCB" secondAttribute="bottom" constant="-2" id="hfE-zf-Mce"/>
+                <constraint firstAttribute="bottom" secondItem="otf-9U-7jd" secondAttribute="bottom" id="mae-EY-zlC"/>
+                <constraint firstItem="57q-m1-jfL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="pzh-2Y-Bj2"/>
+                <constraint firstItem="m9d-uz-wCB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="rvd-1Z-dkc"/>
+                <constraint firstAttribute="trailing" secondItem="m9d-uz-wCB" secondAttribute="trailing" constant="8" id="uHO-zX-05U"/>
+                <constraint firstAttribute="trailing" secondItem="otf-9U-7jd" secondAttribute="trailing" id="v9X-R0-G76"/>
+            </constraints>
+            <point key="canvasLocation" x="572" y="447"/>
+        </view>
+    </objects>
+</document>

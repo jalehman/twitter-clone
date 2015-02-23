@@ -47,7 +47,7 @@ class MasterViewController: UIViewController {
                 return
         }
         
-        viewModel.executeTwitterLogin.executionErrors()
+        viewModel.executeTwitterLogin.errors
             .subscribeNextAs {
                 (error: NSError) in
                 println(error)

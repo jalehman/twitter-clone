@@ -17,10 +17,15 @@ class TweetDetailViewModel: NSObject {
     let tweetText: String!
     let createdAt: String!
     let avatarImageURL: NSURL!
-    let retweetCount: String!
-    let favoriteCount: String!
+    dynamic var retweetCount: String!
+    dynamic var favoriteCount: String!
     let retweetedByUserName: String?
     let tweet: Tweet
+    weak var delegate: TweetCellViewModelDelegate!
+    
+    var executeRetweet: RACCommand!
+    var executeFavorite: RACCommand!
+    var executeShowReply: RACCommand!
     
     private let services: ViewModelServices
     
@@ -39,6 +44,58 @@ class TweetDetailViewModel: NSObject {
         self.tweet = tweet
         
         super.init()
-    }
+        
+        executeRetweet = RACCommand() {
+            [unowned self] input -> RACSignal in
+            return self.services.twitterService.retweet(self.tweet.tweetId!)
+        }
+        
+        executeRetweet.executionValues().subscribeNext {
+            [unowned self]  _ in
+            self.tweet.retweetCount = (self.tweet.retweetCount ?? 0) + 1
+            self.retweetCount = String(stringInterpolationSegment: self.tweet.retweetCount!)
+        }
+        
+        executeFavorite = RACCommand() {
+            [unowned self] input -> RACSignal in
+            return self.services.twitterService.favorite(self.tweet.tweetId!)
+        }
+        
+        executeFavorite.executionValues().subscribeNext {
+            [unowned self]  _ in
+            self.tweet.favoriteCount = (self.tweet.favoriteCount ?? 0) + 1
+            self.favoriteCount = String(stringInterpolationSegment: self.tweet.favoriteCount!)
+        }
+        
+        executeShowReply = RACCommand() {
+            [unowned self] input -> RACSignal in
+            
+            let composeTweetViewModel = ComposeTweetViewModel(services: self.services, inReplyTo: self.tweet)
+            services.pushViewModel(composeTweetViewModel)
+            
+            let composeTweetCancelledSignal = composeTweetViewModel.executeCancelComposeTweet.executionSignals
+            let composeTweetSignal = composeTweetViewModel.executeComposeTweet.executionSignals
+            
+            let closeComposeTweetSignal = RACSignal.merge([composeTweetCancelledSignal, composeTweetSignal])
+            
+            closeComposeTweetSignal.subscribeNext {
+                _ in
+                self.services.popActiveModal()
+            }
+            
+            composeTweetViewModel.executeComposeTweet.executionValues()
+                .flattenMapAs {
+                    (tweet: Tweet) -> RACStream in
+                    return self.services.twitterService.updateStatus(tweet)
+                }.subscribeNextAs {
+                    (tweet: Tweet) in
+                    self.delegate?.didRespondToTweet(tweet)
+            }
+            
+            return RACSignal.empty()
+            
+        }
 
+        
+    }
 }

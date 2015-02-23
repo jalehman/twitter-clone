@@ -10,4 +10,6 @@
 #import <BDBOAuth1Manager/BDBOAuth1RequestOperationManager.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <JGProgressHUD/JGProgressHUD.h>
+#import <JGProgressHUD/JGProgressHUDErrorIndicatorView.h>
+#import <JGProgressHUD/JGProgressHUDSuccessIndicatorView.h>
 #import <DateTools/DateTools.h>

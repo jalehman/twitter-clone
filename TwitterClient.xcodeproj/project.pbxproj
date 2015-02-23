@@ -24,6 +24,9 @@
 		2F6B0AA91A964FA5003E50C6 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0AA61A964FA5003E50C6 /* RACSignal+Extensions.swift */; };
 		2F6B0AAC1A964FE3003E50C6 /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0AAB1A964FE3003E50C6 /* TwitterService.swift */; };
 		2F6B0AAF1A96590B003E50C6 /* RACCommand+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0AAE1A96590B003E50C6 /* RACCommand+Extensions.swift */; };
+		2F9452551A9A542B006B0B30 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9452531A9A542B006B0B30 /* ComposeTweetViewController.swift */; };
+		2F9452561A9A542B006B0B30 /* ComposeTweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9452541A9A542B006B0B30 /* ComposeTweetViewController.xib */; };
+		2F9452591A9A546D006B0B30 /* ComposeTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9452581A9A546D006B0B30 /* ComposeTweetViewModel.swift */; };
 		2FC99AF51A9667C200825D07 /* TweetsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC99AF41A9667C200825D07 /* TweetsTableViewModel.swift */; };
 		2FC99AF81A96684E00825D07 /* TweetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC99AF61A96684E00825D07 /* TweetsTableViewController.swift */; };
 		2FC99AF91A96684E00825D07 /* TweetsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC99AF71A96684E00825D07 /* TweetsTableViewController.xib */; };
@@ -98,10 +101,13 @@
 		2F6B0AA61A964FA5003E50C6 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		2F6B0AAB1A964FE3003E50C6 /* TwitterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
 		2F6B0AAE1A96590B003E50C6 /* RACCommand+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACCommand+Extensions.swift"; sourceTree = "<group>"; };
+		2F9452531A9A542B006B0B30 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
+		2F9452541A9A542B006B0B30 /* ComposeTweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeTweetViewController.xib; sourceTree = "<group>"; };
+		2F9452581A9A546D006B0B30 /* ComposeTweetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewModel.swift; sourceTree = "<group>"; };
 		2FC99AF41A9667C200825D07 /* TweetsTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsTableViewModel.swift; sourceTree = "<group>"; };
 		2FC99AF61A96684E00825D07 /* TweetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsTableViewController.swift; sourceTree = "<group>"; };
 		2FC99AF71A96684E00825D07 /* TweetsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetsTableViewController.xib; sourceTree = "<group>"; };
-		2FC99AFB1A9681BD00825D07 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		2FC99AFB1A9681BD00825D07 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetTableViewCell.swift; path = TwitterClient/TweetTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		2FC99AFC1A9681BD00825D07 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		2FC99AFF1A9681EC00825D07 /* TweetCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCellViewModel.swift; sourceTree = "<group>"; };
 		2FC99B031A9719D000825D07 /* DateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				2F6B0A831A964B0B003E50C6 /* Extensions */,
 				2F6B0A801A964AC3003E50C6 /* Master */,
 				2FC99AEF1A96679E00825D07 /* Tweets */,
+				2F9452571A9A544C006B0B30 /* ComposeTweet */,
 				2F6B0A601A9648B7003E50C6 /* AppDelegate.swift */,
 				2F6B0A811A964AD7003E50C6 /* ViewModelServices.swift */,
 				2F6B0A671A9648B7003E50C6 /* Images.xcassets */,
@@ -246,6 +253,16 @@
 				2FC99B031A9719D000825D07 /* DateService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		2F9452571A9A544C006B0B30 /* ComposeTweet */ = {
+			isa = PBXGroup;
+			children = (
+				2F9452581A9A546D006B0B30 /* ComposeTweetViewModel.swift */,
+				2F9452531A9A542B006B0B30 /* ComposeTweetViewController.swift */,
+				2F9452541A9A542B006B0B30 /* ComposeTweetViewController.xib */,
+			);
+			name = ComposeTweet;
 			sourceTree = "<group>";
 		};
 		2FC99AEF1A96679E00825D07 /* Tweets */ = {
@@ -420,6 +437,7 @@
 				2FC99B111A9724F300825D07 /* TweetDetailViewController.xib in Resources */,
 				2F6B0A6B1A9648B7003E50C6 /* LaunchScreen.xib in Resources */,
 				2FC99AF91A96684E00825D07 /* TweetsTableViewController.xib in Resources */,
+				2F9452561A9A542B006B0B30 /* ComposeTweetViewController.xib in Resources */,
 				2F6B0A681A9648B7003E50C6 /* Images.xcassets in Resources */,
 				2F6B0A8B1A964BA8003E50C6 /* MasterViewController.xib in Resources */,
 			);
@@ -474,6 +492,7 @@
 			files = (
 				2F6B0AA71A964FA5003E50C6 /* RAC.swift in Sources */,
 				2FC99AF81A96684E00825D07 /* TweetsTableViewController.swift in Sources */,
+				2F9452591A9A546D006B0B30 /* ComposeTweetViewModel.swift in Sources */,
 				2F6B0A8A1A964BA8003E50C6 /* MasterViewController.swift in Sources */,
 				2F6B0AAC1A964FE3003E50C6 /* TwitterService.swift in Sources */,
 				2F239F231A965DA700DF0500 /* Tweet.swift in Sources */,
@@ -482,6 +501,7 @@
 				2F6B0A821A964AD7003E50C6 /* ViewModelServices.swift in Sources */,
 				2FC99B001A9681EC00825D07 /* TweetCellViewModel.swift in Sources */,
 				2FC99AFD1A9681BD00825D07 /* TweetTableViewCell.swift in Sources */,
+				2F9452551A9A542B006B0B30 /* ComposeTweetViewController.swift in Sources */,
 				2F6B0AA91A964FA5003E50C6 /* RACSignal+Extensions.swift in Sources */,
 				2FC99B0D1A9724A800825D07 /* TweetDetailViewModel.swift in Sources */,
 				2F6B0AAF1A96590B003E50C6 /* RACCommand+Extensions.swift in Sources */,

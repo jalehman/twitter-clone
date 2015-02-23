@@ -11,6 +11,15 @@ import Foundation
 // a collection of extension methods that allows for strongly typed closures, and remove
 // some ugly implicit optionals
 extension RACSignal {
+    
+    class func rac_return(value: AnyObject!) -> RACSignal {
+        return RACSignal.createSignal {
+            subscriber -> RACDisposable! in
+            subscriber.sendNext(value)
+            subscriber.sendCompleted()
+            return nil
+        }
+    }
 
     func subscribeNextAs<T>(nextClosure:(T) -> ()) -> () {
         self.subscribeNext {

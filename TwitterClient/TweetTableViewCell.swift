@@ -18,6 +18,9 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var timeSinceTweetLabel: UILabel!
     @IBOutlet weak var retweetedByLabel: UILabel!
+    @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var userNameLabelVerticalSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var retweetedByLabelTopSpaceConstraint: NSLayoutConstraint!
@@ -59,6 +62,28 @@ class TweetTableViewCell: UITableViewCell {
             userNameLabelVerticalSpaceConstraint.constant = 0
             retweetedByLabelTopSpaceConstraint.constant = 0
             self.setNeedsUpdateConstraints()
+        }
+        
+        retweetButton.rac_command = tweetCellViewModel.executeRetweet
+        favoriteButton.rac_command = tweetCellViewModel.executeFavorite
+        replyButton.rac_command = tweetCellViewModel.executeShowReply
+        
+        RACObserve(tweetCellViewModel, "retweeted").subscribeNextAs {
+            [unowned self] (retweeted: NSNumber) in
+            if retweeted.boolValue {
+                self.retweetButton.setImage(UIImage(named: "retweet_on")!, forState: .Normal)
+            } else {
+                self.retweetButton.setImage(UIImage(named: "retweet_dark")!, forState: .Normal)
+            }
+        }
+        
+        RACObserve(tweetCellViewModel, "favorited").subscribeNextAs {
+            [unowned self] (favorited: NSNumber) in
+            if favorited.boolValue {
+                self.favoriteButton.setImage(UIImage(named: "favorite_on")!, forState: .Normal)
+            } else {
+                self.favoriteButton.setImage(UIImage(named: "favorite_dark")!, forState: .Normal)
+            }
         }
 
     }

@@ -11,15 +11,28 @@ import Foundation
 class Tweet: NSObject {
     // TODO: Make createdAt lazy
     // TODO: Static date formatter?
-    let user: User?
-    let text: String?
+    var user: User?
+    var text: String?
     var createdAtString: String?
-    let createdAt: NSDate?
-    let favoriteCount: Int?
-    let retweetCount: Int?
+    var createdAt: NSDate?
+    var favoriteCount: Int?
+    var retweetCount: Int?
     var retweetedBy: User? = nil
+    var tweetId: Int?
+    var retweeted: Bool = false
+    var favorited: Bool = false
+    var inReplyToStatusId: Int?
     
-    let dictionary: NSDictionary
+    var dictionary: NSDictionary?
+    
+    init(text: String, inReplyToStatusId: Int? = nil) {
+        self.text = text
+        self.user = User.currentUser
+        self.createdAt = NSDate()
+        self.createdAtString = DateService.sharedInstance.formatter.stringFromDate(self.createdAt!)
+        self.inReplyToStatusId = inReplyToStatusId
+        super.init()
+    }
     
     init(dictionary: NSDictionary) {
         if let retweet = dictionary["retweeted_status"] as? NSDictionary {
@@ -37,6 +50,10 @@ class Tweet: NSObject {
             self.retweetCount = dictionary["retweet_count"] as? Int
         }
         
+        self.retweeted = dictionary["retweeted"] as! Bool
+        self.favorited = dictionary["favorited"] as! Bool
+        
+        self.tweetId = dictionary["id"] as? Int
         self.dictionary = dictionary
         
         let dateService = DateService.sharedInstance
