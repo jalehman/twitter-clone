@@ -98,7 +98,11 @@ Of course, the case where tweet composition fails is not handled here -- we'd en
 
 ![twitter-login-logout](twitter-login-logout.gif)
 
++ Login, Logout, OAuth login flow
+
 ![twitter-persist](twitter-persist.gif)
+
++ Persistence accross sections
 
 ![twitter-compose](twitter-compose.gif)
 
