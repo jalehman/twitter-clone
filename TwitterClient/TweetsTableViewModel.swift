@@ -53,10 +53,9 @@ class TweetsTableViewModel: NSObject {
                 return tweet.executeShowReply.executionValues()
             }
             
-            RACSignal.merge(signals).flattenMap { $0 as! RACStream }
-                .subscribeNextAs { (tweet: Tweet) in
-                    let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
-                    self!.tweets = [viewModel] + self!.tweets
+            RACSignal.merge(signals).subscribeNextAs { (tweet: Tweet) in
+                let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
+                self!.tweets = [viewModel] + self!.tweets
             }
         }
         
@@ -66,8 +65,7 @@ class TweetsTableViewModel: NSObject {
             let tweetDetailViewModel = TweetDetailViewModel(services: self!.services, tweet: tweetCellViewModel.tweet)
             self!.services.pushViewModel(tweetDetailViewModel)
             
-            tweetCellViewModel.executeShowReply.executionValues()
-                .flattenMap { $0 as! RACStream }
+            tweetDetailViewModel.executeShowReply.executionValues()
                 .subscribeNextAs { (tweet: Tweet) in
                     let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
                     self!.tweets = [viewModel] + self!.tweets

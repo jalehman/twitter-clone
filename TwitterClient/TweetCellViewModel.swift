@@ -84,7 +84,7 @@ class TweetCellViewModel: NSObject {
             }
             
             return composeTweetViewModel.executeComposeTweet.executionValues()
-                .mapAs {
+                .flattenMapAs {
                     (tweet: Tweet) -> RACStream in
                     return self.services.twitterService.updateStatus(tweet)
                 }
