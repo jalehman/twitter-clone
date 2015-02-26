@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var navigationController: UINavigationController!
     
-    var viewModel: MasterViewModel!
+    var viewModel: AuthViewModel!
     var viewModelServices: ViewModelServices!
     
     
@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navigationController = UINavigationController()
         viewModelServices = ViewModelServices(navigationController: navigationController)
-        viewModel = MasterViewModel(services: viewModelServices)
-        let viewController = MasterViewController(viewModel: viewModel)
+        viewModel = AuthViewModel(services: viewModelServices)
+        let viewController = AuthViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: false)
         

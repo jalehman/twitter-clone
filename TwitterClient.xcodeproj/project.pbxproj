@@ -15,9 +15,9 @@
 		2F6B0A771A9648B8003E50C6 /* TwitterClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A761A9648B8003E50C6 /* TwitterClientTests.swift */; };
 		2F6B0A821A964AD7003E50C6 /* ViewModelServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A811A964AD7003E50C6 /* ViewModelServices.swift */; };
 		2F6B0A851A964B31003E50C6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A841A964B31003E50C6 /* Array+Extensions.swift */; };
-		2F6B0A871A964B6A003E50C6 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A861A964B6A003E50C6 /* MasterViewModel.swift */; };
-		2F6B0A8A1A964BA8003E50C6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A881A964BA8003E50C6 /* MasterViewController.swift */; };
-		2F6B0A8B1A964BA8003E50C6 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B0A891A964BA8003E50C6 /* MasterViewController.xib */; };
+		2F6B0A871A964B6A003E50C6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A861A964B6A003E50C6 /* AuthViewModel.swift */; };
+		2F6B0A8A1A964BA8003E50C6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A881A964BA8003E50C6 /* AuthViewController.swift */; };
+		2F6B0A8B1A964BA8003E50C6 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B0A891A964BA8003E50C6 /* AuthViewController.xib */; };
 		2F6B0AA31A964E50003E50C6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6B0A971A964DD5003E50C6 /* ReactiveCocoa.framework */; };
 		2F6B0AA71A964FA5003E50C6 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0AA41A964FA5003E50C6 /* RAC.swift */; };
 		2F6B0AA81A964FA5003E50C6 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0AA51A964FA5003E50C6 /* RACObserve.swift */; };
@@ -91,9 +91,9 @@
 		2F6B0A761A9648B8003E50C6 /* TwitterClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClientTests.swift; sourceTree = "<group>"; };
 		2F6B0A811A964AD7003E50C6 /* ViewModelServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelServices.swift; sourceTree = "<group>"; };
 		2F6B0A841A964B31003E50C6 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		2F6B0A861A964B6A003E50C6 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
-		2F6B0A881A964BA8003E50C6 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		2F6B0A891A964BA8003E50C6 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
+		2F6B0A861A964B6A003E50C6 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		2F6B0A881A964BA8003E50C6 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		2F6B0A891A964BA8003E50C6 /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		2F6B0A8C1A964C05003E50C6 /* TwitterClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterClient-Bridging-Header.h"; sourceTree = "<group>"; };
 		2F6B0A8F1A964DD4003E50C6 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ReactiveCocoa/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		2F6B0AA41A964FA5003E50C6 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			children = (
 				2F6B0AAA1A964FC0003E50C6 /* Model */,
 				2F6B0A831A964B0B003E50C6 /* Extensions */,
-				2F6B0A801A964AC3003E50C6 /* Master */,
+				2F6B0A801A964AC3003E50C6 /* Auth */,
 				2FC99AEF1A96679E00825D07 /* Tweets */,
 				2F9452571A9A544C006B0B30 /* ComposeTweet */,
 				2F6B0A601A9648B7003E50C6 /* AppDelegate.swift */,
@@ -203,14 +203,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2F6B0A801A964AC3003E50C6 /* Master */ = {
+		2F6B0A801A964AC3003E50C6 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				2F6B0A861A964B6A003E50C6 /* MasterViewModel.swift */,
-				2F6B0A881A964BA8003E50C6 /* MasterViewController.swift */,
-				2F6B0A891A964BA8003E50C6 /* MasterViewController.xib */,
+				2F6B0A861A964B6A003E50C6 /* AuthViewModel.swift */,
+				2F6B0A881A964BA8003E50C6 /* AuthViewController.swift */,
+				2F6B0A891A964BA8003E50C6 /* AuthViewController.xib */,
 			);
-			name = Master;
+			name = Auth;
 			sourceTree = "<group>";
 		};
 		2F6B0A831A964B0B003E50C6 /* Extensions */ = {
@@ -439,7 +439,7 @@
 				2FC99AF91A96684E00825D07 /* TweetsTableViewController.xib in Resources */,
 				2F9452561A9A542B006B0B30 /* ComposeTweetViewController.xib in Resources */,
 				2F6B0A681A9648B7003E50C6 /* Images.xcassets in Resources */,
-				2F6B0A8B1A964BA8003E50C6 /* MasterViewController.xib in Resources */,
+				2F6B0A8B1A964BA8003E50C6 /* AuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,10 +493,10 @@
 				2F6B0AA71A964FA5003E50C6 /* RAC.swift in Sources */,
 				2FC99AF81A96684E00825D07 /* TweetsTableViewController.swift in Sources */,
 				2F9452591A9A546D006B0B30 /* ComposeTweetViewModel.swift in Sources */,
-				2F6B0A8A1A964BA8003E50C6 /* MasterViewController.swift in Sources */,
+				2F6B0A8A1A964BA8003E50C6 /* AuthViewController.swift in Sources */,
 				2F6B0AAC1A964FE3003E50C6 /* TwitterService.swift in Sources */,
 				2F239F231A965DA700DF0500 /* Tweet.swift in Sources */,
-				2F6B0A871A964B6A003E50C6 /* MasterViewModel.swift in Sources */,
+				2F6B0A871A964B6A003E50C6 /* AuthViewModel.swift in Sources */,
 				2FC99AF51A9667C200825D07 /* TweetsTableViewModel.swift in Sources */,
 				2F6B0A821A964AD7003E50C6 /* ViewModelServices.swift in Sources */,
 				2FC99B001A9681EC00825D07 /* TweetCellViewModel.swift in Sources */,

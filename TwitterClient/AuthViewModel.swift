@@ -1,5 +1,5 @@
 //
-//  MasterViewModel.swift
+//  AuthViewModel.swift
 //  TwitterClient
 //
 //  Created by Josh Lehman on 2/19/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MasterViewModel: NSObject {
+class AuthViewModel: NSObject {
     
     // MARK: Properties
     
@@ -31,8 +31,7 @@ class MasterViewModel: NSObject {
         
         services.twitterService.executeOpenURL.executionValues()
             .deliverOn(RACScheduler.mainThreadScheduler())
-            .subscribeNext {
-            _ in
+            .subscribeNext { _ in
             services.pushViewModel(self.tweetsViewModel)
         }
 

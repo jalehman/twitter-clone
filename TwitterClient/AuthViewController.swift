@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  AuthViewController.swift
 //  TwitterClient
 //
 //  Created by Josh Lehman on 2/19/15.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-class MasterViewController: UIViewController {
+class AuthViewController: UIViewController {
     
     // MARK: Properties
     
     @IBOutlet weak var loginWithTwitterButton: UIButton!
     
-    private let viewModel: MasterViewModel
+    private let viewModel: AuthViewModel
     
     // MARK: API
     
-    init(viewModel: MasterViewModel) {
+    init(viewModel: AuthViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: "MasterViewController", bundle: nil)
+        super.init(nibName: "AuthViewController", bundle: nil)
     }
 
     required init(coder aDecoder: NSCoder) {
