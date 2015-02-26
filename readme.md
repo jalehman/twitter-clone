@@ -7,7 +7,8 @@ Time spent: `14 hours`
 ### Installation
 
 1. `git submodule update --init`
-2. `pod install`
+2. `cd ReactiveCocoa; script/bootstrap; cd ..`
+3. `pod install`
 
 ### Notes
 
