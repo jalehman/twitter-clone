@@ -21,7 +21,6 @@ class TweetDetailViewModel: NSObject {
     dynamic var favoriteCount: String!
     let retweetedByUserName: String?
     let tweet: Tweet
-    weak var delegate: TweetCellViewModelDelegate!
     
     var executeRetweet: RACCommand!
     var executeFavorite: RACCommand!
@@ -83,19 +82,10 @@ class TweetDetailViewModel: NSObject {
                 self.services.popActiveModal()
             }
             
-            composeTweetViewModel.executeComposeTweet.executionValues()
-                .flattenMapAs {
-                    (tweet: Tweet) -> RACStream in
+            return composeTweetViewModel.executeComposeTweet.executionValues()
+                .flattenMapAs { (tweet: Tweet) -> RACStream in
                     return self.services.twitterService.updateStatus(tweet)
-                }.subscribeNextAs {
-                    (tweet: Tweet) in
-                    self.delegate?.didRespondToTweet(tweet)
-            }
-            
-            return RACSignal.empty()
-            
+            }            
         }
-
-        
     }
 }

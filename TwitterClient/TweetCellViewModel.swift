@@ -8,10 +8,6 @@
 
 import Foundation
 
-@objc protocol TweetCellViewModelDelegate {
-    func didRespondToTweet(tweet: Tweet)
-}
-
 class TweetCellViewModel: NSObject {
     
     // MARK: Properties
@@ -23,7 +19,6 @@ class TweetCellViewModel: NSObject {
     let avatarImageURL: NSURL!
     let retweetedByUserName: String?
     var tweet: Tweet
-    weak var delegate: TweetCellViewModelDelegate!
     
     dynamic var retweeted: Bool
     dynamic var favorited: Bool
@@ -88,17 +83,11 @@ class TweetCellViewModel: NSObject {
                 self.services.popActiveModal()
             }
             
-            composeTweetViewModel.executeComposeTweet.executionValues()
-                .flattenMapAs {
+            return composeTweetViewModel.executeComposeTweet.executionValues()
+                .mapAs {
                     (tweet: Tweet) -> RACStream in
                     return self.services.twitterService.updateStatus(tweet)
-                }.subscribeNextAs {
-                    (tweet: Tweet) in
-                    self.delegate?.didRespondToTweet(tweet)
-            }
-            
-            return RACSignal.empty()
-
+                }
         }
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TweetsTableViewModel: NSObject, TweetCellViewModelDelegate {
+class TweetsTableViewModel: NSObject {
     
     // MARK: Properties
     
@@ -44,17 +44,35 @@ class TweetsTableViewModel: NSObject, TweetCellViewModelDelegate {
             let tweets = any as! [Tweet]
             self!.tweets = tweets.map { (tweet: Tweet) -> TweetCellViewModel in
                 let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
-                viewModel.delegate = self!
                 return viewModel
             }
         }
         
+        RACObserve(self, "tweets").subscribeNext { [weak self] _  in
+            let signals: [RACSignal] = self!.tweets.map { (tweet: TweetCellViewModel) -> RACSignal in
+                return tweet.executeShowReply.executionValues()
+            }
+            
+            RACSignal.merge(signals).flattenMap { $0 as! RACStream }
+                .subscribeNextAs { (tweet: Tweet) in
+                    let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
+                    self!.tweets = [viewModel] + self!.tweets
+            }
+        }
+        
         executeViewTweetDetails = RACCommand() {
-            [unowned self] input -> RACSignal in
+            [weak self] input -> RACSignal in
             let tweetCellViewModel = input as! TweetCellViewModel
-            let tweetDetailViewModel = TweetDetailViewModel(services: self.services, tweet: tweetCellViewModel.tweet)
-            tweetDetailViewModel.delegate = self
-            self.services.pushViewModel(tweetDetailViewModel)
+            let tweetDetailViewModel = TweetDetailViewModel(services: self!.services, tweet: tweetCellViewModel.tweet)
+            self!.services.pushViewModel(tweetDetailViewModel)
+            
+            tweetCellViewModel.executeShowReply.executionValues()
+                .flattenMap { $0 as! RACStream }
+                .subscribeNextAs { (tweet: Tweet) in
+                    let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
+                    self!.tweets = [viewModel] + self!.tweets
+            }
+            
             return RACSignal.empty()
         }
         
@@ -84,16 +102,9 @@ class TweetsTableViewModel: NSObject, TweetCellViewModelDelegate {
                 }.subscribeNextAs {
                     (tweet: Tweet) in
                     let viewModel = TweetCellViewModel(services: self!.services, tweet: tweet)
-                    viewModel.delegate = self!
                     self!.tweets[0] = viewModel
             }
             return RACSignal.empty()
         }
-    }
-    
-    func didRespondToTweet(tweet: Tweet) {
-        let viewModel = TweetCellViewModel(services: self.services, tweet: tweet)
-        viewModel.delegate = self
-        self.tweets = [viewModel] + self.tweets
     }
 }
