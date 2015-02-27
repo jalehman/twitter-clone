@@ -8,41 +8,47 @@
 
 import Foundation
 import UIKit
-
+/*
+@objc protocol ContainerViewController {
+    var containedNavigationController: UINavigationController { get }
+}
+*/
 class ViewModelServices: NSObject {
     
     // MARK: Properties
     
     let twitterService: TwitterService
     
-    private let rootNavigationController: UINavigationController
-    private var appNavigationController: UINavigationController!
+    private let authNavigationController: UINavigationController
+    private var containerViewController: MasterViewController!
+    private var masterNavigationController: UINavigationController!
     private var modalNavigationStack: [UINavigationController] = []
     
     // MARK: API
     
     init(navigationController: UINavigationController) {
-        self.rootNavigationController = navigationController
+        self.authNavigationController = navigationController
         self.twitterService = TwitterService()
     }
     
     // MARK: ViewModelServices Implementation
     
     func pushViewModel(viewModel: AnyObject) {
-        if let tweetsTableViewModel = viewModel as? TweetsTableViewModel {
-            appNavigationController = wrapNavigationController(TweetsTableViewController(viewModel: tweetsTableViewModel))
-            rootNavigationController.presentViewController(appNavigationController, animated: false, completion: nil)
+        if let masterViewModel = viewModel as? MasterViewModel {
+            containerViewController = MasterViewController(viewModel: masterViewModel)
+            masterNavigationController = containerViewController.containedNavigationController
+            authNavigationController.presentViewController(containerViewController, animated: false, completion: nil)
         } else if let tweetDetailViewModel = viewModel as? TweetDetailViewModel {
-            appNavigationController.pushViewController(TweetDetailViewController(viewModel: tweetDetailViewModel), animated: true)
+            masterNavigationController.pushViewController(TweetDetailViewController(viewModel: tweetDetailViewModel), animated: true)
         } else if let composeTweetViewModel = viewModel as? ComposeTweetViewModel {
             let composeTweetViewController: UINavigationController = wrapNavigationController(ComposeTweetViewController(viewModel: composeTweetViewModel))
             modalNavigationStack.push(composeTweetViewController)
-            appNavigationController.presentViewController(modalNavigationStack.peekAtStack()!, animated: true, completion: nil)
+            masterNavigationController.presentViewController(modalNavigationStack.peekAtStack()!, animated: true, completion: nil)
         }
     }
     
     func popToRootViewModel() {
-        appNavigationController.dismissViewControllerAnimated(true, completion: nil)
+        masterNavigationController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func popActiveModal() {

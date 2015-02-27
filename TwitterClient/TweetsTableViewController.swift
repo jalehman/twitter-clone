@@ -68,22 +68,12 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
         tweetsTable.estimatedRowHeight = 88.0
         tweetsTable.rowHeight = UITableViewAutomaticDimension
         tweetsTable.insertSubview(refreshControl, atIndex: 0)
-        
-        
-        let newBackButton = UIBarButtonItem(title: "", style: .Bordered, target: nil, action: nil)
-        newBackButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
-        self.navigationItem.backBarButtonItem = newBackButton
 
         loadingHUD = JGProgressHUD(style: .Dark)
         loadingHUD.textLabel.text = "Loading..."
         
         logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: nil, action: "")
-        navigationItem.leftBarButtonItem = logoutButton
-        
         composeButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: nil, action: "")
-        navigationItem.rightBarButtonItem = composeButton
-        
-        navigationItem.title = "Home"
         
         bindViewModel()
     }
@@ -92,6 +82,10 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewWillAppear(animated)
         view.setNeedsUpdateConstraints()
         tweetsTable.reloadData()
+        
+        navigationController?.topViewController.navigationItem.leftBarButtonItem = logoutButton
+        navigationController?.topViewController.navigationItem.rightBarButtonItem = composeButton
+        navigationController?.topViewController.navigationItem.title = "Home"
     }
     
     override func viewWillDisappear(animated: Bool) {
