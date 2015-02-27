@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterViewController" customModule="TwitterClient" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainerViewController" customModule="TwitterClient" customModuleProvider="target">
             <connections>
                 <outlet property="panGR" destination="H7r-4Q-lzS" id="J4u-KS-tyA"/>
                 <outlet property="tapGR" destination="d8A-R7-Wox" id="7vT-3R-2Zz"/>

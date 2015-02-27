@@ -20,7 +20,7 @@ class ViewModelServices: NSObject {
     let twitterService: TwitterService
     
     private let authNavigationController: UINavigationController
-    private var containerViewController: MasterViewController!
+    private var containerViewController: ContainerViewController!
     private var masterNavigationController: UINavigationController!
     private var modalNavigationStack: [UINavigationController] = []
     
@@ -34,8 +34,8 @@ class ViewModelServices: NSObject {
     // MARK: ViewModelServices Implementation
     
     func pushViewModel(viewModel: AnyObject) {
-        if let masterViewModel = viewModel as? MasterViewModel {
-            containerViewController = MasterViewController(viewModel: masterViewModel)
+        if let containerViewModel = viewModel as? ContainerViewModel {
+            containerViewController = ContainerViewController(viewModel: containerViewModel)
             masterNavigationController = containerViewController.containedNavigationController
             authNavigationController.presentViewController(containerViewController, animated: false, completion: nil)
         } else if let tweetDetailViewModel = viewModel as? TweetDetailViewModel {

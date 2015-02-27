@@ -30,7 +30,7 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        edgesForExtendedLayout = .None
+        edgesForExtendedLayout = UIRectEdge.All
         
         view.backgroundColor = UIColor(red: 0.361, green: 0.686, blue: 0.925, alpha: 1)
     }

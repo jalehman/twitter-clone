@@ -15,13 +15,13 @@ class AuthViewModel: NSObject {
     var executeTwitterLogin: RACCommand!
     
     private let services: ViewModelServices
-    private var masterViewModel: MasterViewModel
+    private var containerViewModel: ContainerViewModel
     
     // MARK: API
     
     init(services: ViewModelServices) {
         self.services = services
-        self.masterViewModel = MasterViewModel(services: self.services)
+        self.containerViewModel = ContainerViewModel(services: self.services)
         super.init()
         
         executeTwitterLogin = RACCommand() {
@@ -32,14 +32,14 @@ class AuthViewModel: NSObject {
         services.twitterService.executeOpenURL.executionValues()
             .deliverOn(RACScheduler.mainThreadScheduler())
             .subscribeNext { _ in
-            services.pushViewModel(self.masterViewModel)
+            services.pushViewModel(self.containerViewModel)
         }
 
     }
     
     func checkCurrentUser() {
         if User.currentUser != nil {
-            services.pushViewModel(masterViewModel)
+            services.pushViewModel(containerViewModel)
         }
     }
 }

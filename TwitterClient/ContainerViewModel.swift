@@ -1,5 +1,5 @@
 //
-//  MasterViewModel.swift
+//  ContainerViewModel.swift
 //  TwitterClient
 //
 //  Created by Josh Lehman on 2/26/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewModel: NSObject {
+class ContainerViewModel: NSObject {
     
     // MARK: Properties
     

@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  ContainerViewController.swift
 //  TwitterClient
 //
 //  Created by Josh Lehman on 2/26/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UIViewController {
+class ContainerViewController: UIViewController {
     
     // MARK: Properties
     
@@ -18,7 +18,7 @@ class MasterViewController: UIViewController {
     let centerPanelExpandedOffset: CGFloat = 60
     let containedNavigationController: UINavigationController
     
-    private let viewModel: MasterViewModel
+    private let viewModel: ContainerViewModel
     private let tweetsTableViewController: TweetsTableViewController
     private var sideMenuViewController: SideMenuViewController?
     
@@ -26,11 +26,11 @@ class MasterViewController: UIViewController {
 
     // MARK: API
     
-    init(viewModel: MasterViewModel) {
+    init(viewModel: ContainerViewModel) {
         self.viewModel = viewModel
         self.tweetsTableViewController = TweetsTableViewController(viewModel: viewModel.tweetsTableViewModel)
         self.containedNavigationController = UINavigationController(rootViewController: self.tweetsTableViewController)
-        super.init(nibName: "MasterViewController", bundle: nil)
+        super.init(nibName: "ContainerViewController", bundle: nil)
     }
 
     required init(coder aDecoder: NSCoder) {
