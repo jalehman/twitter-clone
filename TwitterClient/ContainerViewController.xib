@@ -6,8 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainerViewController" customModule="TwitterClient" customModuleProvider="target">
             <connections>
-                <outlet property="panGR" destination="H7r-4Q-lzS" id="J4u-KS-tyA"/>
-                <outlet property="tapGR" destination="d8A-R7-Wox" id="7vT-3R-2Zz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,12 +15,6 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="H7r-4Q-lzS" appends="YES" id="BBz-SR-ZgT"/>
-                <outletCollection property="gestureRecognizers" destination="d8A-R7-Wox" appends="YES" id="9SM-wp-1oq"/>
-            </connections>
         </view>
-        <panGestureRecognizer minimumNumberOfTouches="1" id="H7r-4Q-lzS"/>
-        <tapGestureRecognizer id="d8A-R7-Wox"/>
     </objects>
 </document>

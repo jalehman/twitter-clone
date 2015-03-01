@@ -13,6 +13,7 @@ let currentUserKey = "kCurrentUserKey"
 
 class User: NSObject {
     let name: String?
+    let userId: Int
     let screenname: String?
     let profileImageUrl: String?
     let tagline: String?
@@ -21,6 +22,7 @@ class User: NSObject {
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         self.name = dictionary["name"] as? String
+        self.userId = dictionary["id"] as! Int
         self.screenname = dictionary["screen_name"] as? String
         self.profileImageUrl = dictionary["profile_image_url"] as? String
         self.tagline = dictionary["description"] as? String

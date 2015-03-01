@@ -119,6 +119,22 @@ class TwitterService: BDBOAuth1RequestOperationManager {
             return nil
         }
     }
+    
+    func userInfo(user: User) -> RACSignal {
+        return RACSignal.createSignal { subscriber -> RACDisposable! in
+            self.GET("1.1/users/lookup.json", parameters: ["user_id": user.userId], success: {
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) in
+                let array = response as! [NSDictionary]
+                let profile = Profile(user: user, dictionary: array.first!)
+                subscriber.sendNext(profile)
+                subscriber.sendCompleted()
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                    subscriber.sendError(error)
+            })
+            return nil
+        }
+    }
+
 
     // MARK: Private
     

@@ -8,11 +8,7 @@
 
 import Foundation
 import UIKit
-/*
-@objc protocol ContainerViewController {
-    var containedNavigationController: UINavigationController { get }
-}
-*/
+
 class ViewModelServices: NSObject {
     
     // MARK: Properties
@@ -44,6 +40,8 @@ class ViewModelServices: NSObject {
             let composeTweetViewController: UINavigationController = wrapNavigationController(ComposeTweetViewController(viewModel: composeTweetViewModel))
             modalNavigationStack.push(composeTweetViewController)
             masterNavigationController.presentViewController(modalNavigationStack.peekAtStack()!, animated: true, completion: nil)
+        } else if let profileViewModel = viewModel as? ProfileViewModel {
+            masterNavigationController.pushViewController(ProfileViewController(viewModel: profileViewModel), animated: true)
         }
     }
     

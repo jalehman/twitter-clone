@@ -31,6 +31,7 @@ class TweetCellViewModel: NSObject {
     var executeRetweet: RACCommand!
     var executeFavorite: RACCommand!
     var executeShowReply: RACCommand!
+    var executeShowUserProfile: RACCommand!
     
     private let services: ViewModelServices
     
@@ -71,6 +72,10 @@ class TweetCellViewModel: NSObject {
             self.favorited = true
             self.tweet = tweet
         }
+        
+        /*executeShowUserProfile = RACCommand() { input -> RACSignal in
+            let
+        }*/
         
         executeShowReply = RACCommand() {
             [unowned self] input -> RACSignal in

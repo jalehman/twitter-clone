@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="TwitterClient" customModuleProvider="target">
+            <connections>
+                <outlet property="profileAvatarImage" destination="G9X-jv-ziB" id="upa-l1-3XU"/>
+                <outlet property="profileBackgroundImage" destination="wYV-mF-Sux" id="N8Q-W0-osh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wYV-mF-Sux">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="117"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="117" id="ypt-e7-q8b"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G9X-jv-ziB">
+                    <rect key="frame" x="8" y="84" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="RfL-MC-la1"/>
+                        <constraint firstAttribute="width" constant="64" id="kME-Rs-sb5"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wYV-mF-Sux" secondAttribute="trailing" id="Geh-WN-g0m"/>
+                <constraint firstItem="G9X-jv-ziB" firstAttribute="top" secondItem="wYV-mF-Sux" secondAttribute="bottom" constant="-33" id="SLh-qv-Vym"/>
+                <constraint firstItem="wYV-mF-Sux" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="c5T-NS-bCS"/>
+                <constraint firstItem="G9X-jv-ziB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="oRV-My-BLx"/>
+                <constraint firstItem="wYV-mF-Sux" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xK5-j4-9o5"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

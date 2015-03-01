@@ -8,9 +8,14 @@
 
 import UIKit
 
-class SideMenuViewController: UIViewController {
+
+class SideMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Properties
+    
+    @IBOutlet weak var linksTableView: UITableView!
+    
+    private var profileCell: UITableViewCell!
     
     private let viewModel: SideMenuViewModel
     
@@ -25,14 +30,58 @@ class SideMenuViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: UIViewController Overrides
+    // MARK: UIViewController Overrides        
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        edgesForExtendedLayout = UIRectEdge.All
-        
         view.backgroundColor = UIColor(red: 0.361, green: 0.686, blue: 0.925, alpha: 1)
+        linksTableView.backgroundColor = UIColor(red: 0.361, green: 0.686, blue: 0.925, alpha: 1)
+        
+        linksTableView.dataSource = self
+        linksTableView.delegate = self
+        
+        profileCell = linkCell("Profile")
+        
+    }
+    
+    // MARK: UITableViewDataSource Impl
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:return profileCell
+        default: fatalError("Unknown row \(indexPath.row)")
+        }
+    }
+
+    // MARK: UITableViewDelegate Impl
+
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.361, green: 0.686, blue: 0.925, alpha: 1)
+        return view
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if cell == profileCell {
+            viewModel.executeShowCurrentUserProfile.execute(nil)
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // MARK Private
+    
+    private func linkCell(text: String) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel!.text = text
+        cell.backgroundColor = UIColor(red: 0.361, green: 0.686, blue: 0.925, alpha: 1)
+        return cell
     }
 
 }

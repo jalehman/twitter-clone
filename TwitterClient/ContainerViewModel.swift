@@ -15,7 +15,9 @@ class ContainerViewModel: NSObject {
     let tweetsTableViewModel: TweetsTableViewModel
     let sideMenuViewModel: SideMenuViewModel
     
-    private let services: ViewModelServices    
+    var shouldCloseSideMenuSignal: RACSignal!
+    
+    private let services: ViewModelServices
     
     // MARK: API
     
@@ -24,6 +26,17 @@ class ContainerViewModel: NSObject {
         self.tweetsTableViewModel = TweetsTableViewModel(services: services)
         self.sideMenuViewModel = SideMenuViewModel(services: services)
         super.init()
+        
+        let profileClickedSignal = sideMenuViewModel.executeShowCurrentUserProfile.executionSignals
+        
+        sideMenuViewModel.executeShowCurrentUserProfile.executionValues()
+            .subscribeNextAs { [weak self] (profile: Profile) in
+                let viewModel = ProfileViewModel(services: services, profile: profile)
+                self!.services.pushViewModel(viewModel)
+        }
+
+        shouldCloseSideMenuSignal = profileClickedSignal
+        
     }
    
 }

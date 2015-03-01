@@ -12,6 +12,8 @@ class SideMenuViewModel: NSObject {
    
     // MARK: Properties
     
+    var executeShowCurrentUserProfile: RACCommand!
+    
     private let services: ViewModelServices
     
     // MARK: API
@@ -19,6 +21,10 @@ class SideMenuViewModel: NSObject {
     init(services: ViewModelServices) {
         self.services = services
         super.init()
+        
+        executeShowCurrentUserProfile = RACCommand() { input -> RACSignal in
+            return services.twitterService.userInfo(User.currentUser!)
+        }
     }
     
 }

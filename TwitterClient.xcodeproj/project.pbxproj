@@ -13,8 +13,12 @@
 		2F3CD8C61A9FE73B00B4DCF3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CD8C41A9FE73B00B4DCF3 /* ContainerViewController.swift */; };
 		2F3CD8C71A9FE73B00B4DCF3 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CD8C51A9FE73B00B4DCF3 /* ContainerViewController.xib */; };
 		2F3CD8CB1A9FF80700B4DCF3 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CD8C91A9FF80700B4DCF3 /* SideMenuViewController.swift */; };
-		2F3CD8CC1A9FF80700B4DCF3 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CD8CA1A9FF80700B4DCF3 /* SideMenuViewController.xib */; };
 		2F3CD8CE1A9FF81800B4DCF3 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CD8CD1A9FF81800B4DCF3 /* SideMenuViewModel.swift */; };
+		2F3CD8D01AA3966400B4DCF3 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CD8CF1AA3966400B4DCF3 /* SideMenuViewController.xib */; };
+		2F3CD8D31AA3A10C00B4DCF3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CD8D21AA3A10C00B4DCF3 /* ProfileViewModel.swift */; };
+		2F3CD8D61AA3A14200B4DCF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CD8D41AA3A14200B4DCF3 /* ProfileViewController.swift */; };
+		2F3CD8D71AA3A14200B4DCF3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CD8D51AA3A14200B4DCF3 /* ProfileViewController.xib */; };
+		2F3CD8D91AA3B07A00B4DCF3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CD8D81AA3B07A00B4DCF3 /* Profile.swift */; };
 		2F6B0A611A9648B7003E50C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0A601A9648B7003E50C6 /* AppDelegate.swift */; };
 		2F6B0A681A9648B7003E50C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B0A671A9648B7003E50C6 /* Images.xcassets */; };
 		2F6B0A6B1A9648B7003E50C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B0A691A9648B7003E50C6 /* LaunchScreen.xib */; };
@@ -91,8 +95,12 @@
 		2F3CD8C41A9FE73B00B4DCF3 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		2F3CD8C51A9FE73B00B4DCF3 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
 		2F3CD8C91A9FF80700B4DCF3 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		2F3CD8CA1A9FF80700B4DCF3 /* SideMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		2F3CD8CD1A9FF81800B4DCF3 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		2F3CD8CF1AA3966400B4DCF3 /* SideMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
+		2F3CD8D21AA3A10C00B4DCF3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		2F3CD8D41AA3A14200B4DCF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2F3CD8D51AA3A14200B4DCF3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		2F3CD8D81AA3B07A00B4DCF3 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2F6B0A5B1A9648B7003E50C6 /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6B0A5F1A9648B7003E50C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F6B0A601A9648B7003E50C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +166,7 @@
 				2F3CD8C41A9FE73B00B4DCF3 /* ContainerViewController.swift */,
 				2F3CD8C51A9FE73B00B4DCF3 /* ContainerViewController.xib */,
 				2F3CD8C81A9FF7E800B4DCF3 /* SideMenu */,
+				2F3CD8D11AA3A0F100B4DCF3 /* Profile */,
 				2FC99AEF1A96679E00825D07 /* Tweets */,
 			);
 			name = Container;
@@ -168,9 +177,19 @@
 			children = (
 				2F3CD8CD1A9FF81800B4DCF3 /* SideMenuViewModel.swift */,
 				2F3CD8C91A9FF80700B4DCF3 /* SideMenuViewController.swift */,
-				2F3CD8CA1A9FF80700B4DCF3 /* SideMenuViewController.xib */,
+				2F3CD8CF1AA3966400B4DCF3 /* SideMenuViewController.xib */,
 			);
 			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		2F3CD8D11AA3A0F100B4DCF3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F3CD8D21AA3A10C00B4DCF3 /* ProfileViewModel.swift */,
+				2F3CD8D41AA3A14200B4DCF3 /* ProfileViewController.swift */,
+				2F3CD8D51AA3A14200B4DCF3 /* ProfileViewController.xib */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		2F6B0A521A9648B7003E50C6 = {
@@ -275,6 +294,7 @@
 				2F6B0AAD1A964FE7003E50C6 /* Services */,
 				2F239F1C1A965D6300DF0500 /* User.swift */,
 				2F239F221A965DA700DF0500 /* Tweet.swift */,
+				2F3CD8D81AA3B07A00B4DCF3 /* Profile.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -475,7 +495,8 @@
 				2F9452561A9A542B006B0B30 /* ComposeTweetViewController.xib in Resources */,
 				2F6B0A681A9648B7003E50C6 /* Images.xcassets in Resources */,
 				2F6B0A8B1A964BA8003E50C6 /* AuthViewController.xib in Resources */,
-				2F3CD8CC1A9FF80700B4DCF3 /* SideMenuViewController.xib in Resources */,
+				2F3CD8D71AA3A14200B4DCF3 /* ProfileViewController.xib in Resources */,
+				2F3CD8D01AA3966400B4DCF3 /* SideMenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,15 +553,18 @@
 				2F6B0A8A1A964BA8003E50C6 /* AuthViewController.swift in Sources */,
 				2F6B0AAC1A964FE3003E50C6 /* TwitterService.swift in Sources */,
 				2F239F231A965DA700DF0500 /* Tweet.swift in Sources */,
+				2F3CD8D61AA3A14200B4DCF3 /* ProfileViewController.swift in Sources */,
 				2F6B0A871A964B6A003E50C6 /* AuthViewModel.swift in Sources */,
 				2FC99AF51A9667C200825D07 /* TweetsTableViewModel.swift in Sources */,
 				2F6B0A821A964AD7003E50C6 /* ViewModelServices.swift in Sources */,
 				2FC99B001A9681EC00825D07 /* TweetCellViewModel.swift in Sources */,
+				2F3CD8D31AA3A10C00B4DCF3 /* ProfileViewModel.swift in Sources */,
 				2FC99AFD1A9681BD00825D07 /* TweetTableViewCell.swift in Sources */,
 				2F9452551A9A542B006B0B30 /* ComposeTweetViewController.swift in Sources */,
 				2F6B0AA91A964FA5003E50C6 /* RACSignal+Extensions.swift in Sources */,
 				2FC99B0D1A9724A800825D07 /* TweetDetailViewModel.swift in Sources */,
 				2F6B0AAF1A96590B003E50C6 /* RACCommand+Extensions.swift in Sources */,
+				2F3CD8D91AA3B07A00B4DCF3 /* Profile.swift in Sources */,
 				2F6B0A851A964B31003E50C6 /* Array+Extensions.swift in Sources */,
 				2F3CD8CB1A9FF80700B4DCF3 /* SideMenuViewController.swift in Sources */,
 				2F6B0AA81A964FA5003E50C6 /* RACObserve.swift in Sources */,

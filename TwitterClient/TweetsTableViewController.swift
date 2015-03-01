@@ -75,6 +75,11 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
         logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: nil, action: "")
         composeButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: nil, action: "")
         
+        // Twitter style back button with back arrow only
+        let newBackButton = UIBarButtonItem(title: "", style: .Bordered, target: nil, action: nil)
+        newBackButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        self.navigationItem.backBarButtonItem = newBackButton
+        
         bindViewModel()
     }
     
