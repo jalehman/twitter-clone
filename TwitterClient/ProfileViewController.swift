@@ -14,6 +14,21 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileBackgroundImage: UIImageView!
     @IBOutlet weak var profileAvatarImage: UIImageView!
+    @IBOutlet weak var avatarImageContainer: UIView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
+    
+    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var bioTopSpaceConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationLabelScreenNameTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var locationLabelBioTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var numFollowingLabel: UILabel!
+    @IBOutlet weak var numFollowersLabel: UILabel!
+    @IBOutlet weak var numTweetsLabel: UILabel!
+    
     
     private let viewModel: ProfileViewModel
     
@@ -33,6 +48,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profileBackgroundImage.backgroundColor = UIColor(red: 0.361, green: 0.686, blue: 0.925, alpha: 1)
+
+        avatarImageContainer.layer.cornerRadius = 5.0
+        avatarImageContainer.clipsToBounds = true
+        
+        profileAvatarImage.layer.cornerRadius = 5.0
+        profileAvatarImage.clipsToBounds = true
+        
         bindViewModel()
     }
     
@@ -51,10 +74,19 @@ class ProfileViewController: UIViewController {
     // MARK: Private
     
     private func bindViewModel() {
-        self.profileAvatarImage.setImageWithURL(viewModel.avatarImageURL!)
+        profileAvatarImage.setImageWithURL(viewModel.avatarImageURL!)
         
         if viewModel.bannerImageURL != nil {
             profileBackgroundImage.setImageWithURL(viewModel.bannerImageURL!)
         }
+        userNameLabel.text = viewModel.userName
+        screenNameLabel.text = "@\(viewModel.screenName)"
+        
+        bioLabel.text = viewModel.bio
+        locationLabel.text = viewModel.location
+        
+        numFollowingLabel.text = viewModel.numFollowing.jl_abbreviatedFormat() as String
+        numFollowersLabel.text = viewModel.numFollowers.jl_abbreviatedFormat() as String
+        numTweetsLabel.text = viewModel.numTweets.jl_abbreviatedFormat() as String
     }
 }

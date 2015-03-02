@@ -8,16 +8,6 @@
 
 import UIKit
 
-// TODO: Remove or use
-extension NSLayoutConstraint {
-    class func addMultipleConstraints(views: [String: AnyObject], view: UIView, vflConstraints: [String], options: NSLayoutFormatOptions = nil, metrics: [NSObject:AnyObject]? = nil) {
-        for vfl in vflConstraints {
-            let constraint = NSLayoutConstraint.constraintsWithVisualFormat(vfl, options: options, metrics: metrics, views: views)
-            view.addConstraints(constraint)
-        }
-    }
-}
-
 class ContainerViewController: UIViewController {
     
     // MARK: Properties

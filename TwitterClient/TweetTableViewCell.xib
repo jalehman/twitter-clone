@@ -14,13 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GYx-Ir-uN9">
-                        <rect key="frame" x="8" y="28" width="44" height="44"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="43.5" id="90S-YK-WFa"/>
-                            <constraint firstAttribute="width" constant="44" id="dya-XU-VPF"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Michael Moran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Won-Vo-G2J">
                         <rect key="frame" x="60" y="28" width="98" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -80,27 +73,36 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh3-ve-K4W">
+                        <rect key="frame" x="8" y="28" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="JXR-1t-YUU"/>
+                            <constraint firstAttribute="width" constant="44" id="Tsm-Ie-toF"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="GYx-Ir-uN9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2M9-hi-wWF"/>
-                    <constraint firstItem="GYx-Ir-uN9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="7hr-QR-G7K"/>
+                    <constraint firstItem="yFs-WR-kEy" firstAttribute="leading" secondItem="gh3-ve-K4W" secondAttribute="trailing" constant="8" id="2Iv-R7-mfO"/>
                     <constraint firstItem="yFs-WR-kEy" firstAttribute="top" secondItem="Won-Vo-G2J" secondAttribute="bottom" constant="1" id="AsF-o8-jHb"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yFs-WR-kEy" secondAttribute="bottom" constant="4" id="BfJ-XW-aOe"/>
-                    <constraint firstItem="GYx-Ir-uN9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="CRS-a7-ykf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yFs-WR-kEy" secondAttribute="trailing" constant="1" id="CrJ-gs-JEf"/>
                     <constraint firstItem="avq-Rk-gjE" firstAttribute="leading" secondItem="yFs-WR-kEy" secondAttribute="leading" id="F4v-oH-Ic5"/>
                     <constraint firstItem="pFh-Hk-wst" firstAttribute="centerY" secondItem="avq-Rk-gjE" secondAttribute="centerY" id="FpR-Qk-gSE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RvX-7F-wRu" secondAttribute="trailing" constant="1" id="G3g-8p-JiR"/>
+                    <constraint firstItem="gh3-ve-K4W" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="Myq-WL-oaP"/>
+                    <constraint firstItem="Won-Vo-G2J" firstAttribute="leading" secondItem="gh3-ve-K4W" secondAttribute="trailing" constant="8" id="S2G-fX-OU8"/>
                     <constraint firstItem="avq-Rk-gjE" firstAttribute="top" secondItem="yFs-WR-kEy" secondAttribute="bottom" constant="3" id="S7q-3p-LNJ"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="top" secondItem="Won-Vo-G2J" secondAttribute="top" id="StA-wc-aTd"/>
+                    <constraint firstItem="gh3-ve-K4W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Tz1-Aa-3mJ"/>
                     <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="RvX-7F-wRu" secondAttribute="bottom" priority="999" constant="6" id="ZzC-4K-COl"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="top" secondItem="PEK-ey-pSI" secondAttribute="top" id="aE4-el-DVR"/>
-                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="GYx-Ir-uN9" secondAttribute="top" id="ceg-bH-6Vr"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RvX-7F-wRu" secondAttribute="trailing" constant="1" id="gsG-ug-yZE"/>
                     <constraint firstItem="pFh-Hk-wst" firstAttribute="centerY" secondItem="cW7-Qj-bZY" secondAttribute="centerY" id="iRv-bV-uUw"/>
+                    <constraint firstItem="Won-Vo-G2J" firstAttribute="top" secondItem="gh3-ve-K4W" secondAttribute="top" id="jC4-l2-E6U"/>
                     <constraint firstItem="RvX-7F-wRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" priority="999" constant="4" id="nd1-Yd-4jv"/>
-                    <constraint firstItem="Won-Vo-G2J" firstAttribute="leading" secondItem="GYx-Ir-uN9" secondAttribute="trailing" constant="8" id="qXF-am-yBm"/>
-                    <constraint firstItem="yFs-WR-kEy" firstAttribute="leading" secondItem="GYx-Ir-uN9" secondAttribute="trailing" constant="8" id="s5k-v1-iFU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PEK-ey-pSI" secondAttribute="trailing" constant="1" id="uyI-5Q-D6u"/>
                     <constraint firstAttribute="bottomMargin" secondItem="avq-Rk-gjE" secondAttribute="bottom" constant="3" id="xE6-4H-GW1"/>
                     <constraint firstItem="sUl-AW-nCx" firstAttribute="leading" secondItem="Won-Vo-G2J" secondAttribute="trailing" constant="8" id="xl4-2c-cKA"/>
@@ -111,13 +113,12 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="7hr-QR-G7K"/>
                         <exclude reference="G3g-8p-JiR"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="avatarImage" destination="GYx-Ir-uN9" id="aS8-kv-KXv"/>
+                <outlet property="avatarImageButton" destination="gh3-ve-K4W" id="gId-Ph-d4C"/>
                 <outlet property="favoriteButton" destination="cW7-Qj-bZY" id="bEE-kq-C3M"/>
                 <outlet property="nameLabel" destination="Won-Vo-G2J" id="KCe-P0-4Wm"/>
                 <outlet property="replyButton" destination="avq-Rk-gjE" id="FaG-SP-fll"/>

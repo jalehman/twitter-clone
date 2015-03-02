@@ -49,6 +49,17 @@ class TweetsTableViewModel: NSObject, TweetCellViewModelDelegate {
             }
         }
         
+        RACObserve(self, "tweets").flattenMap {
+            [weak self] _ -> RACSignal in
+            let signals: [RACSignal] = self!.tweets.map { (tweet: TweetCellViewModel) -> RACSignal in
+                return tweet.executeShowUserProfile.executionValues()
+            }
+            return RACSignal.merge(signals)
+            }.subscribeNextAs { (profile: Profile) in
+                let viewModel = ProfileViewModel(services: services, profile: profile)
+                services.pushViewModel(viewModel)
+        }
+        
         executeViewTweetDetails = RACCommand() {
             [unowned self] input -> RACSignal in
             let tweetCellViewModel = input as! TweetCellViewModel

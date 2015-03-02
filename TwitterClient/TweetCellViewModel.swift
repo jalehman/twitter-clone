@@ -52,30 +52,30 @@ class TweetCellViewModel: NSObject {
         super.init()
         
         executeRetweet = RACCommand() {
-            [unowned self] input -> RACSignal in
-            return self.services.twitterService.retweet(self.tweet.tweetId!)
+            input -> RACSignal in
+            return services.twitterService.retweet(tweet.tweetId!)
         }
         
         executeRetweet.executionValues().subscribeNextAs {
-            [unowned self] (tweet: Tweet) in
-            self.retweeted = true
-            self.tweet = tweet
+            [weak self] (tweet: Tweet) in
+            self!.retweeted = true
+            self!.tweet = tweet
         }
         
         executeFavorite = RACCommand() {
-            [unowned self] input -> RACSignal in
-            return self.services.twitterService.favorite(self.tweet.tweetId!)
+            input -> RACSignal in
+            return services.twitterService.favorite(tweet.tweetId!)
         }
         
         executeFavorite.executionValues().subscribeNextAs {
-            [unowned self] (tweet: Tweet) in
-            self.favorited = true
-            self.tweet = tweet
+            [weak self] (tweet: Tweet) in
+            self!.favorited = true
+            self!.tweet = tweet
         }
         
-        /*executeShowUserProfile = RACCommand() { input -> RACSignal in
-            let
-        }*/
+        executeShowUserProfile = RACCommand() { _ -> RACSignal in
+            return services.twitterService.userInfo(tweet.user!)
+        }
         
         executeShowReply = RACCommand() {
             [unowned self] input -> RACSignal in

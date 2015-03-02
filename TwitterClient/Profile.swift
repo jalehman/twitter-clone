@@ -14,6 +14,8 @@ class Profile: NSObject {
     let numFollowing: Int
     let numFollowers: Int
     let numTweets: Int
+    let bio: String?
+    let location: String?
     let profileBannerImageURL: String?
    
     init(user: User, dictionary: NSDictionary) {
@@ -21,8 +23,9 @@ class Profile: NSObject {
         self.numFollowing = dictionary["friends_count"] as! Int
         self.numFollowers = dictionary["followers_count"] as! Int
         self.numTweets = dictionary["statuses_count"] as! Int
+        self.bio = dictionary["description"] as? String
+        self.location = dictionary["location"] as? String
         self.profileBannerImageURL = dictionary["profile_banner_url"] as? String
-        println(profileBannerImageURL)
         
         super.init()
     }

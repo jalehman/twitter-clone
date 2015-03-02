@@ -14,7 +14,8 @@ class SideMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: Properties
     
     @IBOutlet weak var linksTableView: UITableView!
-    
+
+    private var homeCell: UITableViewCell!
     private var profileCell: UITableViewCell!
     
     private let viewModel: SideMenuViewModel
@@ -39,7 +40,8 @@ class SideMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         
         linksTableView.dataSource = self
         linksTableView.delegate = self
-        
+
+        homeCell = linkCell("Home")
         profileCell = linkCell("Profile")
         
     }
@@ -47,12 +49,13 @@ class SideMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: UITableViewDataSource Impl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:return profileCell
+        case 0: return homeCell
+        case 1: return profileCell
         default: fatalError("Unknown row \(indexPath.row)")
         }
     }

@@ -15,7 +15,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
-    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var avatarImageButton: UIButton!
     @IBOutlet weak var timeSinceTweetLabel: UILabel!
     @IBOutlet weak var retweetedByLabel: UILabel!
     @IBOutlet weak var replyButton: UIButton!
@@ -30,8 +30,10 @@ class TweetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        avatarImage.layer.cornerRadius = 3.0
-        avatarImage.clipsToBounds = true
+        avatarImageButton.imageView?.layer.cornerRadius = 3.0
+        avatarImageButton.imageView?.clipsToBounds = true
+        avatarImageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
+        avatarImageButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill
         tweetTextLabel.preferredMaxLayoutWidth = tweetTextLabel.frame.size.width
     }
     
@@ -45,7 +47,7 @@ class TweetTableViewCell: UITableViewCell {
         let dateService = DateService.sharedInstance
         nameLabel.text = tweetCellViewModel.name
         screenNameLabel.text = "@\(tweetCellViewModel.screenName)"
-        avatarImage.setImageWithURL(tweetCellViewModel.avatarImageURL)
+        avatarImageButton.setImageForState(.Normal, withURL: tweetCellViewModel.avatarImageURL)
         tweetTextLabel.text = tweetCellViewModel.tweetText
         timeSinceTweetLabel.text = tweetCellViewModel.createdAt.shortTimeAgoSinceNow()
         
@@ -67,6 +69,7 @@ class TweetTableViewCell: UITableViewCell {
         retweetButton.rac_command = tweetCellViewModel.executeRetweet
         favoriteButton.rac_command = tweetCellViewModel.executeFavorite
         replyButton.rac_command = tweetCellViewModel.executeShowReply
+        avatarImageButton.rac_command = tweetCellViewModel.executeShowUserProfile
         
         RACObserve(tweetCellViewModel, "retweeted").subscribeNextAs {
             [unowned self] (retweeted: NSNumber) in
