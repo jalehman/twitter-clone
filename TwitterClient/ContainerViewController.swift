@@ -21,6 +21,7 @@ class ContainerViewController: UIViewController {
     private let viewModel: ContainerViewModel
     private let tweetsTableViewController: TweetsTableViewController
     private var sideMenuViewController: SideMenuViewController?
+    private var menuButton: UIBarButtonItem!
     
     private var startingCenterX: CGFloat!
     
@@ -61,7 +62,23 @@ class ContainerViewController: UIViewController {
         
         tapGR = UITapGestureRecognizer()
         containedNavigationController.view.addGestureRecognizer(tapGR)
-        tapGR.enabled = false                
+        tapGR.enabled = false
+        
+        menuButton = UIBarButtonItem(image: UIImage(named: "iconmonstr-menu-icon"), style: UIBarButtonItemStyle.Bordered, target: nil, action: "")
+        tweetsTableViewController.navigationItem.leftBarButtonItem = menuButton
+        
+        let executeShowMenu = RACCommand() {
+            [weak self] input -> RACSignal in
+            if !self!.containerExpanded {
+                self!.addSideMenuViewController()
+                self!.showShadowForCenterViewController(true)
+                self!.animateSidePanel(!self!.containerExpanded)
+            }
+
+            return RACSignal.empty()
+        }
+        
+        menuButton.rac_command = executeShowMenu
         
         panGR.rac_gestureSignal().subscribeNextAs { [weak self] (sender: UIPanGestureRecognizer) in
             self!.handlePanGesture(sender)
@@ -75,6 +92,7 @@ class ContainerViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         startingCenterX = containedNavigationController.view.center.x
     }
     
@@ -133,7 +151,7 @@ class ContainerViewController: UIViewController {
         if (shouldExpand) {
             containerExpanded = true
             tapGR.enabled = true
-            animateCenterPanelXPosition(targetPosition: CGRectGetWidth(tweetsTableViewController.view.frame) - centerPanelExpandedOffset)
+            animateCenterPanelXPosition(targetPosition: CGRectGetWidth(containedNavigationController.view.frame) - centerPanelExpandedOffset)
         } else {
             animateCenterPanelXPosition(targetPosition: 0) { [weak self] finished in
                 self!.containerExpanded = false

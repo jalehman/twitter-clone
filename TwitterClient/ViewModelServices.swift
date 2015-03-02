@@ -41,12 +41,16 @@ class ViewModelServices: NSObject {
             modalNavigationStack.push(composeTweetViewController)
             masterNavigationController.presentViewController(modalNavigationStack.peekAtStack()!, animated: true, completion: nil)
         } else if let profileViewModel = viewModel as? ProfileViewModel {
-            masterNavigationController.pushViewController(ProfileViewController(viewModel: profileViewModel), animated: true)
+            masterNavigationController.pushViewController(ProfileViewController(viewModel: profileViewModel), animated: false)
         }
     }
     
     func popToRootViewModel() {
         masterNavigationController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func popToBaseViewModel() {
+        masterNavigationController.popToRootViewControllerAnimated(true)
     }
     
     func popActiveModal() {

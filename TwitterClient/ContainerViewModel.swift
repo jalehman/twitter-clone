@@ -28,14 +28,24 @@ class ContainerViewModel: NSObject {
         super.init()
         
         let profileClickedSignal = sideMenuViewModel.executeShowCurrentUserProfile.executionSignals
+        let homeClickedSignal = sideMenuViewModel.executeShowHome.executionSignals
+        let mentionsClickedSignal = sideMenuViewModel.executeShowMentions.executionSignals
         
         sideMenuViewModel.executeShowCurrentUserProfile.executionValues()
-            .subscribeNextAs { [weak self] (profile: Profile) in
+            .subscribeNextAs { (profile: Profile) in
                 let viewModel = ProfileViewModel(services: services, profile: profile)
-                self!.services.pushViewModel(viewModel)
+                services.pushViewModel(viewModel)
+        }
+        
+        homeClickedSignal.subscribeNext { _ in
+            self.tweetsTableViewModel.executeFetchTweets.execute("home")
+        }
+        
+        mentionsClickedSignal.subscribeNext { _ in
+            self.tweetsTableViewModel.executeFetchTweets.execute("mentions")
         }
 
-        shouldCloseSideMenuSignal = profileClickedSignal
+        shouldCloseSideMenuSignal = RACSignal.merge([profileClickedSignal, homeClickedSignal, mentionsClickedSignal])
         
     }
    

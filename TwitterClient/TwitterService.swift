@@ -58,10 +58,10 @@ class TwitterService: BDBOAuth1RequestOperationManager {
         return RACSignal.empty()
     }
     
-    func fetchHomeTimelineTweets() -> RACSignal {
+    func fetchTimelineTweets(timelineType: String) -> RACSignal {
         return RACSignal.createSignal {
             subscriber -> RACDisposable! in
-            self.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) in
+            self.GET("1.1/statuses/\(timelineType)_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) in
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 subscriber.sendNext(tweets)
                 subscriber.sendCompleted()

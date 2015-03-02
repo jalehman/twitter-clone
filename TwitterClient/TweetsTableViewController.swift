@@ -17,7 +17,6 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tweetsTable: UITableView!
     
     private let viewModel: TweetsTableViewModel
-    private var logoutButton: UIBarButtonItem!
     private var composeButton: UIBarButtonItem!
     
     // MARK: API
@@ -68,17 +67,13 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
         tweetsTable.estimatedRowHeight = 88.0
         tweetsTable.rowHeight = UITableViewAutomaticDimension
         tweetsTable.insertSubview(refreshControl, atIndex: 0)
-
-        loadingHUD = JGProgressHUD(style: .Dark)
-        loadingHUD.textLabel.text = "Loading..."
-        
-        logoutButton = UIBarButtonItem(title: "Logout", style: .Bordered, target: nil, action: "")
-        composeButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: nil, action: "")
         
         // Twitter style back button with back arrow only
         let newBackButton = UIBarButtonItem(title: "", style: .Bordered, target: nil, action: nil)
         newBackButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         self.navigationItem.backBarButtonItem = newBackButton
+        
+        composeButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: nil, action: "")
         
         bindViewModel()
     }
@@ -88,9 +83,13 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
         view.setNeedsUpdateConstraints()
         tweetsTable.reloadData()
         
-        navigationController?.topViewController.navigationItem.leftBarButtonItem = logoutButton
         navigationController?.topViewController.navigationItem.rightBarButtonItem = composeButton
-        navigationController?.topViewController.navigationItem.title = "Home"
+        
+       RACObserve(viewModel, "showing").mapAs { (title: NSString) -> NSString in
+            return title.capitalizedString
+        }.subscribeNextAs { (title: NSString) in
+            self.navigationController?.topViewController.navigationItem.title = title as String
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -102,25 +101,28 @@ class TweetsTableViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Private
     
     private func bindViewModel() {
-        logoutButton.rac_command = viewModel.executeLogout
         composeButton.rac_command = viewModel.executeShowComposeTweet
         refreshControl.rac_command = viewModel.executeFetchTweets
         
-        viewModel.executeFetchTweets.execute(nil)
+        viewModel.executeFetchTweets.execute("home")
         
         let fetchTweetsExecutingSignal = viewModel.executeFetchTweets.executing
         
-        fetchTweetsExecutingSignal.subscribeNext { _ in
-            self.loadingHUD.showInView(self.view)
+        fetchTweetsExecutingSignal.subscribeNext { [weak self] _ in
+            if self!.loadingHUD == nil {
+                self!.loadingHUD = JGProgressHUD(style: .Dark)
+                self!.loadingHUD.textLabel.text = "Loading..."
+            }
+            self!.loadingHUD.showInView(self!.view)
+        }
+
+        
+        fetchTweetsExecutingSignal.not().subscribeNext { [weak self] _ in
+            self!.loadingHUD.dismiss()
         }
         
-        fetchTweetsExecutingSignal.not().subscribeNext { _ in
-            self.loadingHUD.dismiss()
-        }
-        
-        RACObserve(viewModel, "tweets").subscribeNext {
-            _ in
-            self.tweetsTable.reloadData()
+        RACObserve(viewModel, "tweets").subscribeNext {[weak self] _ in
+            self!.tweetsTable.reloadData()
         }
         
     }

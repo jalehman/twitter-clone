@@ -13,8 +13,8 @@ class TweetsTableViewModel: NSObject, TweetCellViewModelDelegate {
     // MARK: Properties
     
     dynamic var tweets: [TweetCellViewModel] = []
+    dynamic var showing: String = "home"
     
-    var executeLogout: RACCommand!
     var executeFetchTweets: RACCommand!
     var executeViewTweetDetails: RACCommand!
     var executeShowComposeTweet: RACCommand!
@@ -28,15 +28,11 @@ class TweetsTableViewModel: NSObject, TweetCellViewModelDelegate {
         
         super.init()
         
-        executeLogout = RACCommand() {
-            input -> RACSignal in
-            services.popToRootViewModel()
-            return services.twitterService.logout()
-        }
-        
         executeFetchTweets = RACCommand() {
             [unowned self] input -> RACSignal in
-            return self.services.twitterService.fetchHomeTimelineTweets()
+            let timelineType = input as? String
+            self.showing = timelineType ?? "home"
+            return self.services.twitterService.fetchTimelineTweets(timelineType ?? "home")
         }
         
         executeFetchTweets.executionValues().subscribeNext {
